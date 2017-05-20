@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public float levelStartDelay = 2f;						//Time to wait before starting level, in seconds.
 
 	public int highScore { get; set; }
+	private Text hsText;
 	private Text levelText;
 	private int level = 0;	
 	private GameObject levelImage;
@@ -32,19 +33,30 @@ public class GameManager : MonoBehaviour {
 
 		//Sets this to not be destroyed when reloading scene
 		DontDestroyOnLoad(gameObject);	
-		//InitGame ();
-
-		highScore = 0;
 
 	}
 
-	void InitGame()
+	void Start()
+	{
+//		Scene s = SceneManager.GetActiveScene ();
+//		if (s.name != "MainMenu") {
+//			InitLevel ();			
+//		}
+
+		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+	}
+		
+
+	void InitLevel()
 	{
 		//fidn object first, because cant find it if it is inactive.
 		levelImage = GameObject.Find ("lvlImage");
 		levelText = GameObject.Find ("lvlText").GetComponent<Text> ();
 		levelImage.SetActive (false);
 		levelText.text = "Level " + level;
+
+		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
+		hsText.text = "Score: " + highScore;
 
 		levelImage.SetActive (true);
 		Invoke ("HideLevelImage", levelStartDelay);
@@ -61,20 +73,21 @@ public class GameManager : MonoBehaviour {
 		//Call InitGame to initialize our level.
 
 		Debug.Log ("Loaded Level " + level);
-		InitGame();
+		InitLevel();
 	}
-	void OnEnable()
-	{
-		//Tell our ‘OnLevelFinishedLoading’ function to start listening for a scene change event as soon as
-		//this script is enabled.
-			SceneManager.sceneLoaded += OnLevelFinishedLoading;
-	}
-	void OnDisable()
-	{
-		//Tell our ‘OnLevelFinishedLoading’ function to stop listening for a scene change event as soon as this script is disabled.
-		//Remember to always have an unsubscription for every delegate you subscribe to!
-			SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-	}
+
+//	void OnEnable()
+//	{
+//		//Tell our ‘OnLevelFinishedLoading’ function to start listening for a scene change event as soon as
+//		//this script is enabled.
+//		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+//	}
+//	void OnDisable()
+//	{
+//		//Tell our ‘OnLevelFinishedLoading’ function to stop listening for a scene change event as soon as this script is disabled.
+//		//Remember to always have an unsubscription for every delegate you subscribe to!
+//		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+//	}
 
 	//Hides black image used between levels
 	void HideLevelImage()
@@ -93,6 +106,8 @@ public class GameManager : MonoBehaviour {
 
 		levelImage.SetActive (true);
 		enabled = false;
+
+		SceneManager.LoadScene ("Level2");
 	}
 
 }

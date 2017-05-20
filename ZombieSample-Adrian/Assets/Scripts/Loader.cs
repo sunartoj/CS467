@@ -16,7 +16,7 @@ public class Loader : MonoBehaviour {
 			//Instantiate gameManager prefab
 			Instantiate(gameManager);
 
-		DislayHighScore ();
+		//DislayHighScore ();
 	}
 
 	void DislayHighScore()
