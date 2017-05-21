@@ -46,11 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DestroyMe.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GetHighScore.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MoveMe.cs" />
      <Compile Include="Assets\Scripts\MoveMeByForce.cs" />
+     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />
      <Compile Include="Assets\Scripts\bulletCtrl.cs" />
      <Compile Include="Assets\Scripts\enemyDamage.cs" />
      <Compile Include="Assets\Scripts\enemyHealth.cs" />

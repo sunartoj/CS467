@@ -107,7 +107,11 @@ public class GameManager : MonoBehaviour {
 		levelImage.SetActive (true);
 		enabled = false;
 
-		SceneManager.LoadScene ("Level2");
+	}
+
+	IEnumerator SomeDelay()
+	{
+		yield return new WaitForSeconds (3);
 	}
 
 }

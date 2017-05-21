@@ -28,6 +28,7 @@ public class ninjaCtrl : MonoBehaviour {
 	{
 		if (other.tag=="Zombie") {
 			TakeDamage (1);
+			//Debug.Log ("Took Damage");
 		}
 	}
 

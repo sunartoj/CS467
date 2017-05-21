@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class shootBullet : MonoBehaviour {
-
 	public GameObject theProjectile;
 	public float shootTime; //delay in shooting a spore
 	public Transform shootFrom;
