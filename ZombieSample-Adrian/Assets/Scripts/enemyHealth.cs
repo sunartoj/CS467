@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class enemyHealth : MonoBehaviour {
 
-	public int maxHealth;
+    public int points;
+    public int maxHealth;
+    public bool canDropItem;
+    public GameObject theDrop;
+    public float chanceToDrop;
+
 	int currentHealth;
-	public int points;
 
 	GameManager gm = GameManager.instance;
 	private Text hsText;
@@ -31,6 +35,16 @@ public class enemyHealth : MonoBehaviour {
 		//Debug.Log ("Current Health: " + currentHealth); 
 		if (currentHealth <= 0) {
 			Destroy (gameObject);
+
+            if (canDropItem)
+            {
+                float rVal = Random.value;
+                if (rVal < chanceToDrop)
+                {
+                    //Debug.Log("Rval: " + rVal);
+                    Instantiate(theDrop, new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z), Quaternion.identity);
+                }
+            }
 
 			gm.currScore += points;
 			DislayScoreScore ();

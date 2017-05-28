@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Loader.cs" />
     <Compile Include="Assets\Scripts\MoveMe.cs" />
     <Compile Include="Assets\Scripts\MoveMeByForce.cs" />
+    <Compile Include="Assets\Scripts\PickupItem.cs" />
     <Compile Include="Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />

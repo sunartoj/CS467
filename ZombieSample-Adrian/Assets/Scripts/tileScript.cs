@@ -66,7 +66,7 @@ public class tileScript : MonoBehaviour
 
     private void PlaceTower()
     {
-        Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
+        //Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
         //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
         Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle

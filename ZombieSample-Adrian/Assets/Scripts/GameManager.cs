@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour {
 	public float levelStartDelay = 2f;						//Time to wait before starting level, in seconds.
 
 	public int currScore { get; set; }
+    public int currGold { get; set; }
     public int hiScore { get; set; }
     public int levelStartScore { get; set;  }
+    public int levelStartGold { get; set; }
     public int level { get; set; }
 	private Text hsText;
 	private Text levelText;
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour {
 		Invoke ("HideLevelImage", levelStartDelay);
 
         levelStartScore = currScore;        //for reloading the level if died
+        levelStartGold = currGold;
 
         Debug.Log ("init: " + level);
 	}
@@ -136,6 +139,7 @@ public class GameManager : MonoBehaviour {
         }
 
         currScore = 0;
+        currGold = 0;
 
 	}
 

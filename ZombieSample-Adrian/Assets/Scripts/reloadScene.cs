@@ -11,6 +11,7 @@ public class reloadScene : MonoBehaviour {
 	{
 		Debug.Log ("Reloading Level" + gm.level);
         gm.currScore = gm.levelStartScore;
+        gm.currGold = gm.levelStartGold;
 		gm.level--;
 		SceneManager.LoadScene (1);
 	}
