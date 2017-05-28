@@ -4,15 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class mainMenuButtons : MonoBehaviour {
-
 	public void LoadScene(int sceneIndex)
 	{
-			SceneManager.LoadScene (sceneIndex);
+		SceneManager.LoadScene (sceneIndex);
 	}
-
-	public void GuitGame()
-	{
-		Application.Quit ();
-	}
-
+		
 }

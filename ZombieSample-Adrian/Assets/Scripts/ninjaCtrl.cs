@@ -35,8 +35,9 @@ public class ninjaCtrl : MonoBehaviour {
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-		//Debug.Log ("Took damage: " + currentHealth); 
+		Debug.Log ("Took damage: " + currentHealth); 
 		if (currentHealth <= 0) {
+
 			Destroy (gameObject);
 		}
 	}

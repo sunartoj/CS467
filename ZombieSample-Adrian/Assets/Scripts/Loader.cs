@@ -24,6 +24,6 @@ public class Loader : MonoBehaviour {
 		GameManager gm = GameManager.instance;
 
 		hsText = GameObject.Find ("highScoreText").GetComponent<Text> ();
-		hsText.text = "High Score: " + gm.highScore;
+		hsText.text = "High Score: " + gm.hiScore;
 	}
 }

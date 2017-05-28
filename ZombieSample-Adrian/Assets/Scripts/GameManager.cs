@@ -9,16 +9,37 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;	
 	public float levelStartDelay = 2f;						//Time to wait before starting level, in seconds.
 
-	public int highScore { get; set; }
+	public int currScore { get; set; }
+    public int hiScore { get; set; }
+    public int levelStartScore { get; set;  }
+    public int level { get; set; }
 	private Text hsText;
 	private Text levelText;
-	private int level = 0;	
 	private GameObject levelImage;
-	//private bool doingSetup;
+	Button mainMenu;
+	Button RestartLevel;
 
 
-	// Use this for initialization
-	void Awake () {
+    #region DropTowers
+
+    //temp, just for testing
+    [SerializeField]
+    private GameObject towerPrefab;
+
+    public GameObject TowerPrefab
+    {
+        get
+        {
+            return towerPrefab;
+        }
+
+    }
+
+    #endregion
+
+
+    // Use this for initialization
+    void Awake () {
 		//Check if instance already exists
 		if (instance == null)
 
@@ -27,23 +48,40 @@ public class GameManager : MonoBehaviour {
 
 		//If instance already exists and it's not this:
 		else if (instance != this)
-
 			//Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
 			Destroy(gameObject);	
 
 		//Sets this to not be destroyed when reloading scene
 		DontDestroyOnLoad(gameObject);	
-
 	}
 
 	void Start()
 	{
-//		Scene s = SceneManager.GetActiveScene ();
-//		if (s.name != "MainMenu") {
-//			InitLevel ();			
-//		}
-
 		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+		level = 0;
+		currScore = 0;
+        hiScore = 0;
+	}
+
+	//This is called each time a scene is loaded.
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+	{
+		Scene s = SceneManager.GetActiveScene ();
+		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
+
+		if (scene.name != "MainMenu") {
+            hsText.text = "Score: " + currScore;
+
+            //Add one to our level number.
+            level++;
+			InitLevel();
+		}
+        else
+        {
+            hsText.text = "High Score: " + hiScore;
+        }
+
+        Debug.Log ("Loaded Level " + level);
 	}
 		
 
@@ -52,42 +90,24 @@ public class GameManager : MonoBehaviour {
 		//fidn object first, because cant find it if it is inactive.
 		levelImage = GameObject.Find ("lvlImage");
 		levelText = GameObject.Find ("lvlText").GetComponent<Text> ();
+
+		mainMenu = GameObject.Find ("MenuButton").GetComponent<Button> ();
+		RestartLevel = GameObject.Find ("RestartLevelButton").GetComponent<Button> ();
+
+		mainMenu.gameObject.SetActive (false);
+		RestartLevel.gameObject.SetActive (false);
+
 		levelImage.SetActive (false);
 		levelText.text = "Level " + level;
-
-		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
-		hsText.text = "Score: " + highScore;
 
 		levelImage.SetActive (true);
 		Invoke ("HideLevelImage", levelStartDelay);
 
-		Debug.Log ("init: " + level);
+        levelStartScore = currScore;        //for reloading the level if died
+
+        Debug.Log ("init: " + level);
 	}
-
-	//This is called each time a scene is loaded.
-	void OnLevelFinishedLoading(Scene scene, LoadSceneMode
-		mode)
-	{
-		//Add one to our level number.
-		level++;
-		//Call InitGame to initialize our level.
-
-		Debug.Log ("Loaded Level " + level);
-		InitLevel();
-	}
-
-//	void OnEnable()
-//	{
-//		//Tell our ‘OnLevelFinishedLoading’ function to start listening for a scene change event as soon as
-//		//this script is enabled.
-//		SceneManager.sceneLoaded += OnLevelFinishedLoading;
-//	}
-//	void OnDisable()
-//	{
-//		//Tell our ‘OnLevelFinishedLoading’ function to stop listening for a scene change event as soon as this script is disabled.
-//		//Remember to always have an unsubscription for every delegate you subscribe to!
-//		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-//	}
+		
 
 	//Hides black image used between levels
 	void HideLevelImage()
@@ -105,7 +125,17 @@ public class GameManager : MonoBehaviour {
 												//or go to main menu
 
 		levelImage.SetActive (true);
+		mainMenu.gameObject.SetActive (true);
+		RestartLevel.gameObject.SetActive (true);
+
 		enabled = false;
+
+        if (currScore > hiScore)
+        {
+            hiScore = currScore;
+        }
+
+        currScore = 0;
 
 	}
 

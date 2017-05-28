@@ -46,9 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DestroyMe.cs" />
+     <Compile Include="Assets\Scripts\DestroyMe.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GetHighScore.cs" />
+     <Compile Include="Assets\Scripts\GoToMainMenu.cs" />
+     <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MoveMe.cs" />
      <Compile Include="Assets\Scripts\MoveMeByForce.cs" />
@@ -59,6 +61,7 @@
      <Compile Include="Assets\Scripts\gameOverScript.cs" />
      <Compile Include="Assets\Scripts\mainMenuButtons.cs" />
      <Compile Include="Assets\Scripts\ninjaCtrl.cs" />
+     <Compile Include="Assets\Scripts\reloadScene.cs" />
      <Compile Include="Assets\Scripts\shootBullet.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

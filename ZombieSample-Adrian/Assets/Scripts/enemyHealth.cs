@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class enemyHealth : MonoBehaviour {
 
@@ -31,15 +32,13 @@ public class enemyHealth : MonoBehaviour {
 		if (currentHealth <= 0) {
 			Destroy (gameObject);
 
-			gm.highScore += points;
+			gm.currScore += points;
 			DislayScoreScore ();
-
-			Debug.Log ("High Score: " + gm.highScore);
 		}
 	}
 
 	void DislayScoreScore()
 	{		
-		hsText.text = "Score: " + gm.highScore;
+		hsText.text = "Score: " + gm.currScore;
 	}
 }
