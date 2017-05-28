@@ -48,7 +48,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         Vector3 maxTile = Vector3.zero;
 
         //this gets the topleft of what is visible on main camera
-        Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(140, 385));     //(0,Screen.height) = top left corner
+        Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(110, 580));     //(0,Screen.height) = top left corner
 
         //this is for creating the tiles in position
         for (int y = 0; y < mapYSize; y++)

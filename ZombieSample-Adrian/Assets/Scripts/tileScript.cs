@@ -69,7 +69,7 @@ public class tileScript : MonoBehaviour
         Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
         //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
-        Vector3 temp = new Vector3(transform.position.x, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
+        Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
         GameObject tower = Instantiate(GameManager.instance.TowerPrefab, temp, Quaternion.identity);
 
         tower.layer = GridPosition.Y + 8;       //because my user layers start at 8
