@@ -106,6 +106,9 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -130,6 +133,7 @@
   <ItemGroup>
     <Compile Include="Assets\Angie Sprite\Editor\Autorun.cs" />
     <Compile Include="Assets\Angie Sprite\Editor\DGChecker.cs" />
+    <Compile Include="Assets\Angie Sprite\Editor\OpenMoreGames.cs" />
     <Compile Include="Assets\Angie Sprite\Editor\Welcome.cs" />
   </ItemGroup>
   <ItemGroup>

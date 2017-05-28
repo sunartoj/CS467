@@ -89,6 +89,7 @@
     <Compile Include="Assets\Angie Sprite\Scripts\Enums.cs" />
     <Compile Include="Assets\Arrow.cs" />
     <Compile Include="Assets\Scripts\BuildInfo.cs" />
+    <Compile Include="Assets\Scripts\BuildManager.cs" />
     <Compile Include="Assets\Scripts\BuildMenu.cs" />
     <Compile Include="Assets\Scripts\BulletDamage.cs" />
     <Compile Include="Assets\Scripts\DefaultVelocity.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Scripts\Grass.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\MouseController.cs" />
+    <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\SunCollect.cs" />
     <Compile Include="Assets\Scripts\SunSpawn.cs" />
     <Compile Include="Assets\Scripts\ZombieAttacking.cs" />
