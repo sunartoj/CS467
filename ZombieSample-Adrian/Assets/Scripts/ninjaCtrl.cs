@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ninjaCtrl : MonoBehaviour {
-	
-	int maxHealth = 350;
+
+    public int maxHealth;
+    public int cost;
 	int currentHealth;
 
 	// Use this for initialization

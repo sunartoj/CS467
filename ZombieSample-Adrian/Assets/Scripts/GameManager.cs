@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public int levelStartGold { get; set; }
     public int level { get; set; }
 	private Text hsText;
+    private Text goldText;
 	private Text levelText;
 	private GameObject levelImage;
 	Button mainMenu;
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour {
 		level = 0;
 		currScore = 0;
         hiScore = 0;
+        currGold = 50;
 	}
 
 	//This is called each time a scene is loaded.
@@ -71,8 +73,12 @@ public class GameManager : MonoBehaviour {
 		Scene s = SceneManager.GetActiveScene ();
 		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
 
-		if (scene.name != "MainMenu") {
+
+        if (scene.name != "MainMenu") {
             hsText.text = "Score: " + currScore;
+
+            goldText = GameObject.Find("GoldText").GetComponent<Text>();
+            goldText.text = "Gold: " + currGold;
 
             //Add one to our level number.
             level++;
@@ -96,7 +102,7 @@ public class GameManager : MonoBehaviour {
 		mainMenu = GameObject.Find ("MenuButton").GetComponent<Button> ();
 		RestartLevel = GameObject.Find ("RestartLevelButton").GetComponent<Button> ();
 
-		mainMenu.gameObject.SetActive (false);
+        mainMenu.gameObject.SetActive (false);
 		RestartLevel.gameObject.SetActive (false);
 
 		levelImage.SetActive (false);
@@ -139,13 +145,13 @@ public class GameManager : MonoBehaviour {
         }
 
         currScore = 0;
-        currGold = 0;
+        currGold = 50;
 
 	}
 
-	IEnumerator SomeDelay()
-	{
-		yield return new WaitForSeconds (3);
-	}
+    public void DislayScoreScore()
+    {
+        goldText.text = "Gold: " + currGold;
+    }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class tileScript : MonoBehaviour
 {
+    GameManager gm;
 
     public Point GridPosition
     {
@@ -25,7 +26,7 @@ public class tileScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        gm = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -68,9 +69,16 @@ public class tileScript : MonoBehaviour
     {
         //Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
+        //if you have enogh gold
+        ninjaCtrl tl = gm.TowerPrefab.GetComponent<ninjaCtrl>();
+        if (gm.currGold < tl.cost)
+        {
+            return;
+        }
+
         //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
         Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
-        GameObject tower = Instantiate(GameManager.instance.TowerPrefab, temp, Quaternion.identity);
+        GameObject tower = Instantiate(gm.TowerPrefab, temp, Quaternion.identity);
 
         tower.layer = GridPosition.Y + 8;       //because my user layers start at 8
 
@@ -81,6 +89,8 @@ public class tileScript : MonoBehaviour
         tower.transform.SetParent(transform);
 
         isEmpty = false;
+        gm.currGold -= tl.cost;
+        gm.DislayScoreScore();
 
         //tower.transform.localPosition = Vector3.zero;
     }
