@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
+    <Compile Include="Assets\Scripts\DragHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GetHighScore.cs" />
     <Compile Include="Assets\Scripts\GoToMainMenu.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />
+    <Compile Include="Assets\Scripts\TowerBtn.cs" />
     <Compile Include="Assets\Scripts\bulletCtrl.cs" />
     <Compile Include="Assets\Scripts\enemyDamage.cs" />
     <Compile Include="Assets\Scripts\enemyHealth.cs" />

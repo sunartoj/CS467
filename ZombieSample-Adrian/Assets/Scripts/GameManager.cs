@@ -22,24 +22,11 @@ public class GameManager : MonoBehaviour {
 	Button mainMenu;
 	Button RestartLevel;
 
-
     #region DropTowers
 
-    //temp, just for testing
-    [SerializeField]
-    private GameObject towerPrefab;
-
-    public GameObject TowerPrefab
-    {
-        get
-        {
-            return towerPrefab;
-        }
-
-    }
+    public TowerBtn ClickBtn { get; set; }
 
     #endregion
-
 
     // Use this for initialization
     void Awake () {
@@ -152,6 +139,11 @@ public class GameManager : MonoBehaviour {
     public void DislayScoreScore()
     {
         goldText.text = "Gold: " + currGold;
+    }
+
+    public void PickTower(TowerBtn towerBtn)
+    {
+        this.ClickBtn = towerBtn;
     }
 
 }

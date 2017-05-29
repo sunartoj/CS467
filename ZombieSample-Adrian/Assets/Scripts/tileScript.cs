@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class tileScript : MonoBehaviour
 {
@@ -47,12 +49,42 @@ public class tileScript : MonoBehaviour
     #region for placing a tower
     //see game manager script
 
+    //public GameObject item
+    //{
+    //    get
+    //    {
+    //        if (transform.childCount > 0)
+    //        {
+    //            return transform.GetChild(0).gameObject;
+    //        }
+    //        return null;
+    //    }
+    //}
+
+    //public void OnDrop(PointerEventData eventData)
+    //{
+    //    if (!item)
+    //    {
+    //        Debug.Log("I dropped it!");
+    //    }
+
+    //    if (isEmpty)
+    //    {
+    //        //PlaceTower();
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Tile is not empty!");
+    //    }
+    //}
+
     private void OnMouseOver()
     {
+        Debug.Log(GridPosition.X + " " + GridPosition.Y);
 
-        //Debug.Log(GridPosition.X + " " + GridPosition.Y);
         if (Input.GetMouseButtonDown(0))
         {
+            
             if (isEmpty)
             {
                 PlaceTower();
@@ -61,39 +93,47 @@ public class tileScript : MonoBehaviour
             {
                 Debug.Log("Tile is not empty!");
             }
-            
+
         }
     }
 
     private void PlaceTower()
     {
-        //Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
+        Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
-        //if you have enogh gold
-        ninjaCtrl tl = gm.TowerPrefab.GetComponent<ninjaCtrl>();
-        if (gm.currGold < tl.cost)
+        if (!EventSystem.current.IsPointerOverGameObject() && gm.ClickBtn != null)
         {
-            return;
+            //if you have enogh gold
+            ninjaCtrl tl = gm.ClickBtn.TowerPrefab.GetComponent<ninjaCtrl>();
+
+            if (gm.currGold < tl.cost)
+            {
+                return;
+            }
+
+            //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
+            Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
+            GameObject tower = Instantiate(gm.ClickBtn.TowerPrefab, temp, Quaternion.identity);
+
+            tower.layer = GridPosition.Y + 8;       //because my user layers start at 8
+
+            //this is to make sure the towers ordering are correct when they overlap
+            tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y + 2;
+
+            //makes htis tower a child object of tile
+            tower.transform.SetParent(transform);
+
+            isEmpty = false;
+            gm.currGold -= tl.cost;
+            gm.DislayScoreScore();
         }
 
-        //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
-        Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
-        GameObject tower = Instantiate(gm.TowerPrefab, temp, Quaternion.identity);
 
-        tower.layer = GridPosition.Y + 8;       //because my user layers start at 8
-
-        //this is to make sure the towers ordering are correct when they overlap
-        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y + 2;
-
-        //makes htis tower a child object of tile
-        tower.transform.SetParent(transform);
-
-        isEmpty = false;
-        gm.currGold -= tl.cost;
-        gm.DislayScoreScore();
 
         //tower.transform.localPosition = Vector3.zero;
     }
+
+
 
     #endregion
 
