@@ -126,6 +126,8 @@ public class tileScript : MonoBehaviour
             isEmpty = false;
             gm.currGold -= tl.cost;
             gm.DislayScoreScore();
+
+            BuyTower();
         }
 
 
@@ -133,7 +135,11 @@ public class tileScript : MonoBehaviour
         //tower.transform.localPosition = Vector3.zero;
     }
 
-
+    public void BuyTower()
+    {
+        //prevents you from accidentally clicking another spot
+        MenuClick.ClickedBtn = null;
+    }
 
     #endregion
 
