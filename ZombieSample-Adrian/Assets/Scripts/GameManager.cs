@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 
     #region DropTowers
 
-    public TowerBtn ClickBtn { get; set; }
+    public TowerBtn ClickedBtn { get; set; }
 
     #endregion
 
@@ -143,7 +143,9 @@ public class GameManager : MonoBehaviour {
 
     public void PickTower(TowerBtn towerBtn)
     {
-        this.ClickBtn = towerBtn;
+
+        Debug.Log("I clicked button");
+        this.ClickedBtn = towerBtn;
     }
 
 }

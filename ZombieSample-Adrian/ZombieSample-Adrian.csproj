@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />
     <Compile Include="Assets\Scripts\TowerBtn.cs" />
+    <Compile Include="Assets\Scripts\Z.cs" />
     <Compile Include="Assets\Scripts\bulletCtrl.cs" />
     <Compile Include="Assets\Scripts\enemyDamage.cs" />
     <Compile Include="Assets\Scripts\enemyHealth.cs" />
