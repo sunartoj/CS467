@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
 		level = 0;
 		currScore = 0;
         hiScore = 0;
-        currGold = 50;
+        currGold = 100;
 	}
 
 	//This is called each time a scene is loaded.
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour {
         }
 
         currScore = 0;
-        currGold = 50;
+        currGold = 100;
 
 	}
 
