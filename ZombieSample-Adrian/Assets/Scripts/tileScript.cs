@@ -99,12 +99,12 @@ public class tileScript : MonoBehaviour
 
     private void PlaceTower()
     {
-        Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
+        //Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
-        if (!EventSystem.current.IsPointerOverGameObject() && Z.ClickedBtn.TowerPrefab != null)
+        if (!EventSystem.current.IsPointerOverGameObject() && MenuClick.ClickedBtn.TowerPrefab != null)
         {
             //if you have enogh gold
-            ninjaCtrl tl = Z.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
+            ninjaCtrl tl = MenuClick.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
 
             if (gm.currGold < tl.cost)
             {
@@ -113,7 +113,7 @@ public class tileScript : MonoBehaviour
 
             //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
             Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
-            GameObject tower = Instantiate(Z.ClickedBtn.TowerPrefab, temp, Quaternion.identity);
+            GameObject tower = Instantiate(MenuClick.ClickedBtn.TowerPrefab, temp, Quaternion.identity);
 
             tower.layer = GridPosition.Y + 8;       //because my user layers start at 8
 

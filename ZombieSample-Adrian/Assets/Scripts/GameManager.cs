@@ -143,8 +143,6 @@ public class GameManager : MonoBehaviour {
 
     public void PickTower(TowerBtn towerBtn)
     {
-
-        Debug.Log("I clicked button");
         this.ClickedBtn = towerBtn;
     }
 

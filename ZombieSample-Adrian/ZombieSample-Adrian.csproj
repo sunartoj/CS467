@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\GoToMainMenu.cs" />
     <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
     <Compile Include="Assets\Scripts\Loader.cs" />
+    <Compile Include="Assets\Scripts\MenuClick.cs" />
     <Compile Include="Assets\Scripts\MoveMe.cs" />
     <Compile Include="Assets\Scripts\MoveMeByForce.cs" />
     <Compile Include="Assets\Scripts\PickupItem.cs" />
