@@ -10,7 +10,7 @@ public class MenuClick : MonoBehaviour {
     public void PickTower(TowerBtn towerBtn)
     {
         ClickedBtn = towerBtn;
-       // Debug.Log("I clicked :" + ClickedBtn.TowerPrefab);
+       Debug.Log("I clicked :" + ClickedBtn.TowerPrefab);
 
     }
 }

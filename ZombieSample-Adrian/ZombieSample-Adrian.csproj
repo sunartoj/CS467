@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\gameOverScript.cs" />
     <Compile Include="Assets\Scripts\mainMenuButtons.cs" />
     <Compile Include="Assets\Scripts\ninjaCtrl.cs" />
+    <Compile Include="Assets\Scripts\recordPlayerPowerUpScript.cs" />
     <Compile Include="Assets\Scripts\reloadScene.cs" />
     <Compile Include="Assets\Scripts\shootBullet.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />

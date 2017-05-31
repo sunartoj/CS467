@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MoveMe : MonoBehaviour {
 
-    [SerializeField]
-    private float initSpeed;
+    public float initSpeed;
 
     public float currSpeed { get; set; }
 
@@ -15,12 +14,30 @@ public class MoveMe : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         move();
 	}
 
     public void move()
     {
         transform.Translate(new Vector3(-currSpeed, 0, 0) * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "RecordPlayer")
+        {
+            print("Zombie stopped");
+            currSpeed = 0;
+
+            recordPlayerPowerUpScript rp = other.GetComponent<recordPlayerPowerUpScript>();
+            rp.OnDestroyEvnt += Rp_OnDestroyHandler;
+        }
+    }
+
+
+    private void Rp_OnDestroyHandler(MonoBehaviour instance)
+    {
+        currSpeed = initSpeed;
     }
 }

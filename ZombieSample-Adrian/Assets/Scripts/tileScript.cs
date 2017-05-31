@@ -119,12 +119,34 @@ public class tileScript : MonoBehaviour
 
             }
 
-            //if you have enogh gold
-            ninjaCtrl tl = MenuClick.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
-            if (gm.currGold < tl.cost)
+            //if this is a record
+            if (MenuClick.ClickedBtn.TowerPrefab.tag == "RecordPlayer")
             {
-                return;
+                if (gm.recordPlayerCount <= 0)
+                {
+                    BuyTower();
+                    return;
+                }
+                else
+                {
+                    Debug.Log("Used a record");
+                    gm.recordPlayerCount--;
+                }
+
             }
+
+            //if you have enough gold
+            ninjaCtrl tl = MenuClick.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
+            if (tl != null)
+            {
+                if (gm.currGold < tl.cost)
+                {
+                    return;
+                }
+
+                gm.currGold -= tl.cost;
+            }
+
 
             //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
             Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
@@ -139,7 +161,6 @@ public class tileScript : MonoBehaviour
             tower.transform.SetParent(transform);
 
             isEmpty = false;
-            gm.currGold -= tl.cost;
             gm.DislayScoreScore();
 
             BuyTower();

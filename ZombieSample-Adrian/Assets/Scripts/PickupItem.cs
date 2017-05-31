@@ -24,6 +24,13 @@ public class PickupItem : MonoBehaviour
 
         }
 
+        if (gameObject.tag == "RecordPlayer")
+        {
+            gm.recordPlayerCount++;
+            Debug.Log("Picked up record player: " + gm.recordPlayerCount);
+
+        }
+
         Destroy(gameObject);
         gm.currGold += value;
         DislayScoreScore();

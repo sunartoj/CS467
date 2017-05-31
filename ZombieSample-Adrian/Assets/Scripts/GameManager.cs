@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour {
     public int levelStartGold { get; set; }
     public int level { get; set; }
     public int pillBottleCount { get; set; }
-	private Text hsText;
+    public int recordPlayerCount { get; set; }
+    private Text hsText;
     private Text goldText;
 	private Text levelText;
 	private GameObject levelImage;
@@ -54,7 +55,9 @@ public class GameManager : MonoBehaviour {
         hiScore = 0;
         currGold = 150;
         pillBottleCount = 0;
-	}
+        recordPlayerCount = 5;
+
+    }
 
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -136,8 +139,10 @@ public class GameManager : MonoBehaviour {
         currScore = 0;
         currGold = 150;
         pillBottleCount = 0;
+        recordPlayerCount = 0;
 
-	}
+
+    }
 
     public void DislayScoreScore()
     {
