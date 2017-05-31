@@ -17,10 +17,18 @@ public class PickupItem : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (gameObject.tag == "PillBottle")
+        {
+            gm.pillBottleCount++;
+            Debug.Log("Picked up pill bottle: " + gm.pillBottleCount);
+
+        }
+
         Destroy(gameObject);
         gm.currGold += value;
         DislayScoreScore();
-        //Debug.Log("Current gold:" + gm.currGold);
+
+
     }
 
     void DislayScoreScore()

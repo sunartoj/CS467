@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public int levelStartScore { get; set;  }
     public int levelStartGold { get; set; }
     public int level { get; set; }
+    public int pillBottleCount { get; set; }
 	private Text hsText;
     private Text goldText;
 	private Text levelText;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour {
 		currScore = 0;
         hiScore = 0;
         currGold = 150;
+        pillBottleCount = 0;
 	}
 
 	//This is called each time a scene is loaded.
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour {
 
         currScore = 0;
         currGold = 150;
+        pillBottleCount = 0;
 
 	}
 

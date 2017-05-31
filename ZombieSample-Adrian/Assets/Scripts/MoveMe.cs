@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class MoveMe : MonoBehaviour {
 
+    [SerializeField]
+    private float initSpeed;
+
+    public float currSpeed { get; set; }
+
 	// Use this for initialization
 	void Start () {
-		
+        currSpeed = initSpeed;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		transform.Translate(new Vector3(-0.15f,0,0) * Time.deltaTime);
+        move();
 	}
+
+    public void move()
+    {
+        transform.Translate(new Vector3(-currSpeed, 0, 0) * Time.deltaTime);
+    }
 }

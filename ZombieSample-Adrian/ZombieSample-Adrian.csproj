@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PillBottlePowerUpScript.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Scripts\DragHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -90,6 +89,7 @@
     <Compile Include="Assets\Scripts\MoveMe.cs" />
     <Compile Include="Assets\Scripts\MoveMeByForce.cs" />
     <Compile Include="Assets\Scripts\PickupItem.cs" />
+    <Compile Include="Assets\Scripts\PillBottlePowerUpScript.cs" />
     <Compile Include="Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />

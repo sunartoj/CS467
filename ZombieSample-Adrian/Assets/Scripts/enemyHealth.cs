@@ -12,7 +12,7 @@ public class enemyHealth : MonoBehaviour {
     public GameObject theDrop;
     public float chanceToDrop;
 
-	int currentHealth;
+	public int currentHealth { get; set; }
 
 	GameManager gm = GameManager.instance;
 	private Text hsText;

@@ -14,7 +14,7 @@ public class tileScript : MonoBehaviour
         private set;
     }
 
-    public bool isEmpty { get; private set; }
+    public bool isEmpty { get; set; }
 
     public Vector2 WorldPosition
     {
@@ -101,11 +101,26 @@ public class tileScript : MonoBehaviour
     {
         //Debug.Log("Placed a tower on: " +GridPosition.X + " " + GridPosition.Y);
 
-        if (!EventSystem.current.IsPointerOverGameObject() && MenuClick.ClickedBtn.TowerPrefab != null)
+        if (!EventSystem.current.IsPointerOverGameObject() && MenuClick.ClickedBtn != null)
         {
+            //if this is a pill bottle
+            if (MenuClick.ClickedBtn.TowerPrefab.tag == "PillBottle")
+            {
+                if (gm.pillBottleCount <= 0)
+                {
+                    BuyTower();
+                    return;
+                }
+                else
+                {
+                    Debug.Log("Used a pill Bottle");
+                    gm.pillBottleCount--;
+                }
+
+            }
+
             //if you have enogh gold
             ninjaCtrl tl = MenuClick.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
-
             if (gm.currGold < tl.cost)
             {
                 return;
@@ -128,6 +143,7 @@ public class tileScript : MonoBehaviour
             gm.DislayScoreScore();
 
             BuyTower();
+
         }
 
 
