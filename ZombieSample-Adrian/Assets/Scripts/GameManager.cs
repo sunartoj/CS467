@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
         hiScore = 0;
         currGold = 150;
         pillBottleCount = 0;
-        recordPlayerCount = 5;
+        recordPlayerCount = 0;
 
     }
 

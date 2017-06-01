@@ -42,7 +42,9 @@ public class enemyHealth : MonoBehaviour {
                 if (rVal < chanceToDrop)
                 {
                     //Debug.Log("Rval: " + rVal);
-                    Instantiate(theDrop, new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z), Quaternion.identity);
+                    //GameObject newDrop =  Instantiate(theDrop, new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z), Quaternion.identity);
+                    GameObject newDrop =  Instantiate(theDrop, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    newDrop.GetComponent<SpriteRenderer>().sortingOrder = 15;
                 }
             }
 

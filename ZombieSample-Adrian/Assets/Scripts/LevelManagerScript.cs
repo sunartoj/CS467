@@ -93,6 +93,9 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     GameObject[] spawnPts;
     bool spawned = false;       //at least 1 zomnbie has been spawned
     bool win = false;
+    int maxEnemyType;
+    private int enemyLevel;     //at level + 1 or max (3 currently, for number of enemy kinds). 
+                                //Used so thatonly 1 kind of enemy on level1 , 2 kinds of level 2, three at level 3 or more. 
 
     void Awake()
     {
@@ -110,6 +113,10 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         //how many enemies per level
         maxEnemies = gm.level * 10;
         zombieCount = 0;
+
+        maxEnemyType = 3;
+
+        enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
 
         Debug.Log("Created new level");
     }
@@ -141,7 +148,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     public void createSpawn()
     {
         GameObject point = spawnPts[Random.Range(0, 5)];
-        GameObject temp = Instantiate(theZombie[Random.Range(0, 2)], point.transform.position, Quaternion.identity); //the quaternion means no rotation
+        GameObject temp = Instantiate(theZombie[Random.Range(0, enemyLevel)], point.transform.position, Quaternion.identity); //the quaternion means no rotation
         temp.layer = point.layer;
         zombieCount++;
         spawned = true;

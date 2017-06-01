@@ -8,8 +8,12 @@ public class ninjaCtrl : MonoBehaviour {
     public int cost;
 	int currentHealth;
 
-	// Use this for initialization
-	void Start () {
+    //used to handle when this object is destroyed
+    public delegate void OnDestroyDelegate(MonoBehaviour instance);
+    public event OnDestroyDelegate OnDestroyEvnt;
+
+    // Use this for initialization
+    void Start () {
 		currentHealth = maxHealth;
 	}
 	
@@ -29,7 +33,7 @@ public class ninjaCtrl : MonoBehaviour {
 	{
 		if (other.tag=="Zombie") {
 			TakeDamage (1);
-			//Debug.Log ("Took Damage");
+			Debug.Log ("Took Damage");
 		}
 	}
 
@@ -42,4 +46,17 @@ public class ninjaCtrl : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+    void OnDestroy()
+    {
+
+        GameObject parent = this.transform.parent.gameObject;
+        tileScript tl = parent.GetComponent<tileScript>();
+        tl.isEmpty = true;
+
+        print("Defender destroyed");
+
+        // Send notification that this object is about to be destroyed
+        if (this.OnDestroyEvnt != null) this.OnDestroyEvnt(this);
+    }
 }
