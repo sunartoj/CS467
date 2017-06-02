@@ -15,32 +15,104 @@ public class TowerBtn : MonoBehaviour {
     {
         gm = GameManager.instance;
 
+        //for when an item is placed on a tile (disable the button if no more of the items)
+        tileScript.OnTilePlacedEvent += Ts_OnTilePlacedEvent;
+
+        //for when an item is picked up, enable button
+        PickupItem.OnItemPickedUpEvent += PickupItem_OnItemPickedUpEvent; 
+
         if (gameObject.name == "CowgirlBtn")
         {
-            if (gm.level < 2 || gm.currGold < towerPrefab.GetComponent<ninjaCtrl>().cost)
+            if (gm.level >= 2 && gm.currGold > towerPrefab.GetComponent<ninjaCtrl>().cost)
             {
                 //thisButton = GameObject.Find("CowgirlBtn").GetComponent<Button>();
-                this.GetComponent<Button>().interactable = false;
+                this.GetComponent<Button>().interactable = true;
             }
             else
             {
-                this.GetComponent<Button>().interactable = true;
+                this.GetComponent<Button>().interactable = false;
             }
 
         }
 
-        if (gameObject.name == "RobotBtn")
+        else if (gameObject.name == "RobotBtn")
         {
-            if (gm.level < 3 || gm.currGold < towerPrefab.GetComponent<ninjaCtrl>().cost)
+            if (gm.level >= 3 && gm.currGold > towerPrefab.GetComponent<ninjaCtrl>().cost)
             {
                 //thisButton = GameObject.Find("CowgirlBtn").GetComponent<Button>();
-                this.GetComponent<Button>().interactable = false;
+                this.GetComponent<Button>().interactable = true;
             }
             else
             {
-                this.GetComponent<Button>().interactable = true;
+                this.GetComponent<Button>().interactable = false;
             }
 
+        }
+        else if (gameObject.name == "PillBottle")
+        {
+            if (gm.pillBottleCount > 0)
+            {
+                this.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                this.GetComponent<Button>().interactable = false;
+            }
+        }
+        else if (gameObject.name == "RecordPlayerBtn")
+        {
+            if (gm.recordPlayerCount > 0)
+            {
+                this.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                this.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    private void PickupItem_OnItemPickedUpEvent(GameObject item)
+    {
+        if (item.tag == "PillBottle")
+        {
+            //Debug.Log("Picked a pill bottle");
+
+            if (gm.pillBottleCount > 0  && gameObject.name == "PillBottle")
+            {
+                this.GetComponent<Button>().interactable = true;
+            }
+        }
+        else if (item.tag == "RecordPlayer")
+        {
+            //Debug.Log("Picked a record player");
+
+            if (gm.pillBottleCount > 0 && gameObject.name == "RecordPlayerBtn")
+            {
+                this.GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+
+    private void Ts_OnTilePlacedEvent(GameObject tower)
+    {
+        if (tower.name == "PillBottlePowerUp")
+        {
+            Debug.Log("Placed a pill bottle");
+
+            if (gm.pillBottleCount <= 0 && gameObject.name == "PillBottle")
+            {
+                this.GetComponent<Button>().interactable = false;
+            }
+        }
+        else if (tower.name == "recordPlayerPowerUp")
+        {
+            Debug.Log("Placed a record player");
+
+            if (gm.recordPlayerCount <= 0 && gameObject.name == "RecordPlayerBtn")
+            {
+                this.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
@@ -52,4 +124,5 @@ public class TowerBtn : MonoBehaviour {
         }
 
     }
+
 }

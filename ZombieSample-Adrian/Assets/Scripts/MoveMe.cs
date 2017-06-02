@@ -25,7 +25,9 @@ public class MoveMe : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "RecordPlayer")
+        //Debug.Log("zombie should stop");
+
+        if (other.name == "recordPlayerPowerUp")  //recordPlayerPowerUp
         {
             print("Zombie stopped");
             currSpeed = 0;
@@ -35,9 +37,9 @@ public class MoveMe : MonoBehaviour {
         }
     }
 
-
     private void Rp_OnDestroyHandler(MonoBehaviour instance)
     {
+        Debug.Log("Record Player power up destroyed");
         currSpeed = initSpeed;
     }
 }

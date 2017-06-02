@@ -8,6 +8,10 @@ public class tileScript : MonoBehaviour
 {
     GameManager gm;
 
+    //these are going to be used so that when a tile is placed, other classes can react
+    public delegate void OnTilePlaced(GameObject tower);
+    public static event OnTilePlaced OnTilePlacedEvent;
+
     public Point GridPosition
     {
         get;
@@ -31,12 +35,6 @@ public class tileScript : MonoBehaviour
         gm = GameManager.instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Setup(Point gridPos, Vector3 worldPos)
     {
         isEmpty = true;
@@ -47,36 +45,6 @@ public class tileScript : MonoBehaviour
     }
 
     #region for placing a tower
-    //see game manager script
-
-    //public GameObject item
-    //{
-    //    get
-    //    {
-    //        if (transform.childCount > 0)
-    //        {
-    //            return transform.GetChild(0).gameObject;
-    //        }
-    //        return null;
-    //    }
-    //}
-
-    //public void OnDrop(PointerEventData eventData)
-    //{
-    //    if (!item)
-    //    {
-    //        Debug.Log("I dropped it!");
-    //    }
-
-    //    if (isEmpty)
-    //    {
-    //        //PlaceTower();
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Tile is not empty!");
-    //    }
-    //}
 
     private void OnMouseOver()
     {
@@ -113,8 +81,8 @@ public class tileScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Used a pill Bottle");
                     gm.pillBottleCount--;
+                    Debug.Log("Used a pill Bottle: " + gm.pillBottleCount);
                 }
 
             }
@@ -129,8 +97,8 @@ public class tileScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Used a record");
                     gm.recordPlayerCount--;
+                    Debug.Log("Used a record: " + gm.recordPlayerCount);
                 }
 
             }
@@ -165,6 +133,7 @@ public class tileScript : MonoBehaviour
 
             BuyTower();
 
+
         }
 
 
@@ -174,6 +143,11 @@ public class tileScript : MonoBehaviour
 
     public void BuyTower()
     {
+        // Send notification that this object is about placed
+        if (OnTilePlacedEvent != null)
+            OnTilePlacedEvent(MenuClick.ClickedBtn.TowerPrefab);
+
+
         //prevents you from accidentally clicking another spot
         MenuClick.ClickedBtn = null;
     }

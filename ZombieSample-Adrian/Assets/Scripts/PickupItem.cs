@@ -10,6 +10,10 @@ public class PickupItem : MonoBehaviour
     private Text goldText;
     GameManager gm = GameManager.instance;
 
+    //these are going to be used so that when an item is picked up (mainly for enabling/disabling button)
+    public delegate void OnItemPickedUp(GameObject item);
+    public static event OnItemPickedUp OnItemPickedUpEvent;
+
     private void Start()
     {
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
@@ -30,6 +34,10 @@ public class PickupItem : MonoBehaviour
             Debug.Log("Picked up record player: " + gm.recordPlayerCount);
 
         }
+
+        // Send notification that this object is about placed
+        if (OnItemPickedUpEvent != null)
+            OnItemPickedUpEvent(gameObject);
 
         Destroy(gameObject);
         gm.currGold += value;

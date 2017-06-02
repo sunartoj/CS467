@@ -54,8 +54,6 @@ public class ninjaCtrl : MonoBehaviour {
         tileScript tl = parent.GetComponent<tileScript>();
         tl.isEmpty = true;
 
-        print("Defender destroyed");
-
         // Send notification that this object is about to be destroyed
         if (this.OnDestroyEvnt != null) this.OnDestroyEvnt(this);
     }
