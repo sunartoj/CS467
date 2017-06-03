@@ -50,12 +50,12 @@ public class GameManager : MonoBehaviour {
 	void Start()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoading;
-		level = 2;
+		level = 3;
 		currScore = 0;
         hiScore = 0;
-        currGold = 10000;
-        pillBottleCount = 1;
-        recordPlayerCount = 1;
+        currGold = 2000;
+        pillBottleCount = 0;
+        recordPlayerCount = 0;
 
     }
 

@@ -140,7 +140,8 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             {
                 win = true;
                 Debug.Log("Win!");
-                LoadNext();
+                Invoke("LoadNext", 3);
+                //LoadNext();
             }
         }
     }
@@ -156,9 +157,14 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         //Debug.Log ("Zombie Number: " + zombieCount);
     }
 
+    //load scene. I only have one at this time...
     void LoadNext()
     {
         SceneManager.LoadScene(1);
     }
 
+    IEnumerable Wait()
+    {
+        yield return new WaitForSeconds(3);
+    }
 }

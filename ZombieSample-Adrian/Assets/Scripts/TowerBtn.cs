@@ -19,7 +19,7 @@ public class TowerBtn : MonoBehaviour {
         tileScript.OnTilePlacedEvent += Ts_OnTilePlacedEvent;
 
         //for when an item is picked up, enable button
-        PickupItem.OnItemPickedUpEvent += PickupItem_OnItemPickedUpEvent; 
+        PickupItem.OnItemPickedUpEvent += PickupItem_OnItemPickedUpEvent;
 
         if (gameObject.name == "CowgirlBtn")
         {
@@ -78,7 +78,7 @@ public class TowerBtn : MonoBehaviour {
         {
             //Debug.Log("Picked a pill bottle");
 
-            if (gm.pillBottleCount > 0  && gameObject.name == "PillBottle")
+            if (gm.pillBottleCount > 0  && this.name == "PillBottle")
             {
                 this.GetComponent<Button>().interactable = true;
             }
@@ -87,7 +87,7 @@ public class TowerBtn : MonoBehaviour {
         {
             //Debug.Log("Picked a record player");
 
-            if (gm.pillBottleCount > 0 && gameObject.name == "RecordPlayerBtn")
+            if (gm.recordPlayerCount > 0 && this.name == "RecordPlayerBtn")
             {
                 this.GetComponent<Button>().interactable = true;
             }

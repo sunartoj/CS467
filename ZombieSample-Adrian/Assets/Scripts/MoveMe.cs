@@ -27,7 +27,7 @@ public class MoveMe : MonoBehaviour {
     {
         //Debug.Log("zombie should stop");
 
-        if (other.name == "recordPlayerPowerUp")  //recordPlayerPowerUp
+        if (other.tag == "RecordPlayerPowerUp")  //recordPlayerPowerUp
         {
             print("Zombie stopped");
             currSpeed = 0;

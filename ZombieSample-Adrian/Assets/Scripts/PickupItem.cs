@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PickupItem : MonoBehaviour
 {
+
     public int value;
 
     private Text goldText;
@@ -19,32 +20,74 @@ public class PickupItem : MonoBehaviour
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
     }
 
-    void OnMouseDown()
+    private void Update()
     {
-        if (gameObject.tag == "PillBottle")
+        if (Input.GetMouseButtonDown(0))
         {
-            gm.pillBottleCount++;
-            Debug.Log("Picked up pill bottle: " + gm.pillBottleCount);
+            //Had an issue iwht detecting colliders with mousedown. So used raycast, I hope
+            Vector2 rayPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
+            //this gnores other layers except for "pickups"
+            LayerMask mask = 1 << LayerMask.NameToLayer("Pickups");
+            RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero, 0f, mask);
+
+            if (hit)
+            {
+                Debug.Log(hit.transform.name);
+                if (hit.transform.tag == "PillBottle")
+                {
+                    gm.pillBottleCount++;
+                    Debug.Log("Picked up pill bottle: " + gm.pillBottleCount);
+
+                }
+
+                if (hit.transform.tag == "RecordPlayer")
+                {
+                    gm.recordPlayerCount++;
+                    Debug.Log("Picked up record player: " + gm.recordPlayerCount);
+
+                }
+
+                // Send notification that this object is about placed
+                if (OnItemPickedUpEvent != null)
+                    OnItemPickedUpEvent(hit.transform.gameObject);
+
+                Destroy(hit.transform.gameObject, 0.15f);
+                gm.currGold += value;
+                DislayScoreScore();
+            }
         }
-
-        if (gameObject.tag == "RecordPlayer")
-        {
-            gm.recordPlayerCount++;
-            Debug.Log("Picked up record player: " + gm.recordPlayerCount);
-
-        }
-
-        // Send notification that this object is about placed
-        if (OnItemPickedUpEvent != null)
-            OnItemPickedUpEvent(gameObject);
-
-        Destroy(gameObject);
-        gm.currGold += value;
-        DislayScoreScore();
-
-
     }
+
+    /// <summary>
+    /// This method does not work when there is another game object behind the item
+    /// </summary>
+    //void OnMouseDown()
+    //{
+    //    if (gameObject.tag == "PillBottle")
+    //    {
+    //        gm.pillBottleCount++;
+    //        Debug.Log("Picked up pill bottle: " + gm.pillBottleCount);
+
+    //    }
+
+    //    if (gameObject.tag == "RecordPlayer")
+    //    {
+    //        gm.recordPlayerCount++;
+    //        Debug.Log("Picked up record player: " + gm.recordPlayerCount);
+
+    //    }
+
+    //    // Send notification that this object is about placed
+    //    if (OnItemPickedUpEvent != null)
+    //        OnItemPickedUpEvent(gameObject);
+
+    //    Destroy(gameObject, 0.15f);
+    //    gm.currGold += value;
+    //    DislayScoreScore();
+
+
+    //}
 
     void DislayScoreScore()
     {
