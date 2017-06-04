@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 	void Start()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoading;
-		level = 3;
+		level = 1;
 		currScore = 0;
         hiScore = 0;
         currGold = 2000;
@@ -62,29 +62,56 @@ public class GameManager : MonoBehaviour {
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
-		Scene s = SceneManager.GetActiveScene ();
+		//Scene s = SceneManager.GetActiveScene ();
 		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
 
+        if (scene.name=="WinScene")
+        {
+            //fidn object first, because cant find it if it is inactive.
+            levelImage = GameObject.Find("lvlImage");
+            levelImage.SetActive(true);
+            levelText = GameObject.Find("lvlText").GetComponent<Text>();
 
-        if (scene.name != "MainMenu") {
-            hsText.text = "Score: " + currScore;
+            mainMenu = GameObject.Find("MenuButton").GetComponent<Button>();
+            RestartLevel = GameObject.Find("RestartLevelButton").GetComponent<Button>();
+
+            mainMenu.gameObject.SetActive(true);
+            RestartLevel.gameObject.SetActive(false);
+
+            levelText.text = "Winner!";
 
             goldText = GameObject.Find("GoldText").GetComponent<Text>();
             goldText.text = "Gold: " + currGold;
 
-            //Add one to our level number.
-            level++;
-			InitLevel();
-		}
+            hsText = GameObject.Find("ScoreText").GetComponent<Text>();
+            hsText.text = "Score: " + currScore;
+
+            ResetCounts();
+        }
         else
         {
-            hsText.text = "High Score: " + hiScore;
+            if (scene.name != "MainMenu")
+            {
+                hsText.text = "Score: " + currScore;
+
+                goldText = GameObject.Find("GoldText").GetComponent<Text>();
+                goldText.text = "Gold: " + currGold;
+
+                //Add one to our level number.
+                level++;
+                InitLevel();
+            }
+            else
+            {
+                hsText.text = "High Score: " + hiScore;
+            }
+
+            Debug.Log("Loaded Level " + level);
         }
 
-        Debug.Log ("Loaded Level " + level);
 	}
 		
-
+    //this is for loading playing level
 	void InitLevel()
 	{
 		//fidn object first, because cant find it if it is inactive.
@@ -121,27 +148,31 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GameOver()
-	{
-		levelText.text = "Game Over . . .";		//change this to a scene with buttons to restart level
-												//or go to main menu
+    {
+        levelText.text = "Game Over . . .";     //change this to a scene with buttons to restart level
+                                                //or go to main menu
 
-		levelImage.SetActive (true);
-		mainMenu.gameObject.SetActive (true);
-		RestartLevel.gameObject.SetActive (true);
+        levelImage.SetActive(true);
+        mainMenu.gameObject.SetActive(true);
+        RestartLevel.gameObject.SetActive(true);
 
-		enabled = false;
+        enabled = false;
 
+        ResetCounts();
+
+    }
+
+    private void ResetCounts()
+    {
         if (currScore > hiScore)
         {
             hiScore = currScore;
         }
 
         currScore = 0;
-        currGold = 150;
+        currGold = 200;
         pillBottleCount = 0;
         recordPlayerCount = 0;
-
-
     }
 
     public void DislayScoreScore()

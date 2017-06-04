@@ -160,7 +160,15 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     //load scene. I only have one at this time...
     void LoadNext()
     {
-        SceneManager.LoadScene(1);
+        if (gm.level == 5)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
+        
     }
 
     IEnumerable Wait()

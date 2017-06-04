@@ -72,22 +72,22 @@ public class TowerBtn : MonoBehaviour {
         }
     }
 
-    private void PickupItem_OnItemPickedUpEvent(GameObject item)
+    private void PickupItem_OnItemPickedUpEvent(string item)
     {
-        if (item.tag == "PillBottle")
+        if (item == "PillBottle")
         {
             //Debug.Log("Picked a pill bottle");
 
-            if (gm.pillBottleCount > 0  && this.name == "PillBottle")
+            if (gm.pillBottleCount > 0  && gameObject.name == "PillBottle")
             {
                 this.GetComponent<Button>().interactable = true;
             }
         }
-        else if (item.tag == "RecordPlayer")
+        else if (item == "RecordPlayer")
         {
             //Debug.Log("Picked a record player");
 
-            if (gm.recordPlayerCount > 0 && this.name == "RecordPlayerBtn")
+            if (gm.recordPlayerCount > 0 && gameObject.name == "RecordPlayerBtn")
             {
                 this.GetComponent<Button>().interactable = true;
             }
