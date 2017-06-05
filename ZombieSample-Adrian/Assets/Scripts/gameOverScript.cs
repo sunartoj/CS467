@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class gameOverScript : MonoBehaviour {
 
-	GameManager gm = GameManager.instance;
-    UIScript ui = UIScript.instance;
+    GameManager gm;
+    UIScript ui;
+
+    private void Start()
+    {
+        gm = GameManager.instance;
+        ui = UIScript.instance;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
 	{

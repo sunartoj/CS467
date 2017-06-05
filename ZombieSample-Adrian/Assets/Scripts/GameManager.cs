@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour {
     void Awake () {
 		//Check if instance already exists
 		if (instance == null)
-
 			//if not, set instance to this
 			instance = this;
 
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour {
 	void Start()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoading;
-		level = 1;
+		level = 0;
 		currScore = 0;
         hiScore = 0;
         currGold = 2000;

@@ -77,6 +77,9 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
 
     #endregion
 
+    //these are going to be used so that when an item is picked up (mainly for enabling/disabling button)
+    public delegate void OnLevelLoaded(int level);
+    public static event OnLevelLoaded OnLevelLoadedEvent;
 
     public GameObject[] theZombie;
 
@@ -108,21 +111,37 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     // Use this for initialization
     void Start()
     {
+        Scene s = SceneManager.GetActiveScene ();
 
-        //uis.HideLevelImage();
+        if (s.name == "MainMenu")
+        {
+            uis.HidePanel();
+        }
+        else if (s.name == "WinScene")
+        {
+            uis.DisableUI();
+        }
+        else
+        {
+            uis.EnableUI();
+            uis.ShowPanel();
 
-        CreateLevel();
-        nextSpawnTime = Time.time + 5f;
+            CreateLevel();
+            nextSpawnTime = Time.time + 5f;
 
-        //how many enemies per level
-        maxEnemies = gm.level;
-        zombieCount = 0;
+            //how many enemies per level
+            maxEnemies = gm.level;
+            zombieCount = 0;
+            maxEnemyType = 3;
+            enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
 
-        maxEnemyType = 3;
+            // Send notification that this object is about placed
+            if (OnLevelLoadedEvent != null)
+                OnLevelLoadedEvent(gm.level);
 
-        enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
+            Debug.Log("Created new level");
+        }
 
-        Debug.Log("Created new level");
     }
 
     // Update is called once per frame
@@ -164,16 +183,14 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     //load scene. I only have one at this time...
     void LoadNext()
     {
-        //if (gm.level == 1)
-        //{
-        //    SceneManager.LoadScene(2);
-        //}
-        //else
-        //{
-        //    SceneManager.LoadScene(1);
-        //}
-
-        SceneManager.LoadScene(1);
+        if (gm.level == 3)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     IEnumerable Wait()

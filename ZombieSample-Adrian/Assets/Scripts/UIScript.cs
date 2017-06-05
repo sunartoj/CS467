@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIScript : MonoBehaviour {
+public class UIScript : MonoBehaviour
+{
 
     GameManager gm;
     private Text hsText;
@@ -40,19 +41,18 @@ public class UIScript : MonoBehaviour {
 
     private void Start()
     {
+        gm = GameManager.instance;
         Debug.Log("UI inistialized");
         levelImage = GameObject.Find("lvlImage");
+        UIPanel = GameObject.Find("UIPanel");
 
         HideLevelImage();
+        HidePanel();
     }
 
     public void DisableUI()
     {
-        if (s.name == "MainMenu")
-        {
-            gameObject.SetActive(false);
-        }
-
+        gameObject.SetActive(false);
     }
 
     public void EnableUI()
@@ -63,7 +63,7 @@ public class UIScript : MonoBehaviour {
     public void GameOver()
     {
         //levelText.text = "Game Over . . .";     //change this to a scene with buttons to restart level
-                                                //or go to main menu
+        //or go to main menu
 
         levelImage.SetActive(true);
         mainMenu.gameObject.SetActive(true);
@@ -80,5 +80,17 @@ public class UIScript : MonoBehaviour {
     {
         //Disable the levelImage gameObject.
         levelImage.SetActive(false);
+    }
+
+    public void HidePanel()
+    {
+        //Disable the levelImage gameObject.
+        UIPanel.SetActive(false);
+    }
+
+    public void ShowPanel()
+    {
+        //Disable the levelImage gameObject.
+        UIPanel.SetActive(true);
     }
 }

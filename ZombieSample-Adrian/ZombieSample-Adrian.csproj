@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MainMenuCanvasScript.cs" />
     <Compile Include="Assets\PillBottlePickupScript.cs" />
     <Compile Include="Assets\RecordPlayerPickupScript.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\Scripts\reloadScene.cs" />
     <Compile Include="Assets\Scripts\shootBullet.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />
+    <Compile Include="Assets\UIFinalScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

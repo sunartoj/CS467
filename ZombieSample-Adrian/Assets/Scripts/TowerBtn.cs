@@ -11,6 +11,7 @@ public class TowerBtn : MonoBehaviour {
     public static TowerBtn instance = null;
 
     GameManager gm;
+
     Button thisButton;
 
     private void Start()
@@ -19,7 +20,12 @@ public class TowerBtn : MonoBehaviour {
 
         //for when an item is placed on a tile (disable the button if no more of the items)
         tileScript.OnTilePlacedEvent += Ts_OnTilePlacedEvent;
+        LevelManagerScript.OnLevelLoadedEvent += LevelManagerScript_OnLevelLoadedEvent;
 
+    }
+
+    private void LevelManagerScript_OnLevelLoadedEvent(int level)
+    {
         if (gameObject.name == "CowgirlBtn")
         {
             if (gm.level >= 2 /* && gm.currGold > towerPrefab.GetComponent<ninjaCtrl>().cost*/ )
