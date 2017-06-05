@@ -124,11 +124,17 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         {
             uis.DisableUI();
         }
+        else if (s.name == "GameOver")
+        {
+            uis.DisableUI();
+            Debug.Log("Levelmngr Game Over....");
+        }
         else
         {
             uis.EnableUI();
             uis.ShowPanel();
             uis.ShowLevelImage();
+            uis.UpdateText();
 
             Invoke("HideLevelImage", 3);
 
@@ -155,7 +161,6 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     {
         if (win)
         {
-            Invoke("LoadNext", 2);
             return;
         }
         if (zombieCount < maxEnemies && nextSpawnTime < Time.time)
@@ -170,7 +175,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             {
                 win = true;
                 Debug.Log("Win!");
-                //Invoke("LoadNext", 2);
+                Invoke("LoadNext", 2);
                 //LoadNext();
             }
         }

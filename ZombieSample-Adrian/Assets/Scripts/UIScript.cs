@@ -72,7 +72,6 @@ public class UIScript : MonoBehaviour
 
     public void GameOver()
     {
-        gm.ResetCounts();
 
         //change this to a scene with buttons to restart level or go to main menu
         //levelText.text = "Game Over . . .";    
