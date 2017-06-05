@@ -9,6 +9,6 @@ public class GoToMainMenu : MonoBehaviour {
 	public void LoadScene()
 	{
 		gm.level = 0;
-		SceneManager.LoadScene ("MainMenu");
+		SceneManager.LoadScene (0);
 	}
 }

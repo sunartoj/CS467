@@ -50,6 +50,10 @@ public class UIScript : MonoBehaviour
 
         goldText = GameObject.Find("GoldText").GetComponent<Text>();
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        levelText = GameObject.Find("lvlText").GetComponent<Text>();
+
+        mainMenu = GameObject.Find("MenuButton").GetComponent<Button>();
+        RestartLevel = GameObject.Find("RestartLevelButton").GetComponent<Button>();
 
         UpdateText();
         HideLevelImage();
@@ -68,16 +72,15 @@ public class UIScript : MonoBehaviour
 
     public void GameOver()
     {
-        //levelText.text = "Game Over . . .";     //change this to a scene with buttons to restart level
-        //or go to main menu
-
-        levelImage.SetActive(true);
-        mainMenu.gameObject.SetActive(true);
-        RestartLevel.gameObject.SetActive(true);
-
-        enabled = false;
-
         gm.ResetCounts();
+
+        //change this to a scene with buttons to restart level or go to main menu
+        //levelText.text = "Game Over . . .";    
+        //levelImage.SetActive(true);
+        //mainMenu.gameObject.SetActive(true);
+        //RestartLevel.gameObject.SetActive(true);
+
+        SceneManager.LoadScene(3);
 
     }
 
@@ -87,10 +90,17 @@ public class UIScript : MonoBehaviour
         //Disable the levelImage gameObject.
         levelImage.SetActive(false);
     }
+    public void ShowLevelImage()
+    {
+        //SHows the level user is on
+        levelImage.SetActive(true);
+        levelText.text = "Level " + gm.level;
+        HideButtons();
+    }
 
     public void HidePanel()
     {
-        //Disable the levelImage gameObject.
+        //Disable the panel gameObject.
         UIPanel.SetActive(false);
     }
 
@@ -104,5 +114,11 @@ public class UIScript : MonoBehaviour
     {
         scoreText.text = "Score: " + gm.currScore;
         goldText.text = "Gold: " + gm.currGold;
+    }
+
+    public void HideButtons()
+    {
+        mainMenu.gameObject.SetActive(false);
+        RestartLevel.gameObject.SetActive(false);
     }
 }

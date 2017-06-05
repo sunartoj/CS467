@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
 	//This is called each time a scene is loaded.
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
-        Debug.Log("Initializing a level");
+        //Debug.Log("Initializing a level");
 
 		//Scene s = SceneManager.GetActiveScene ();
 
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
 
             }
 
-            Debug.Log("Loaded Level " + level);
+            //Debug.Log("Loaded Level " + level);
         }
 
 	}
