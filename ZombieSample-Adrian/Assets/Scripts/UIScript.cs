@@ -13,18 +13,15 @@ public class UIScript : MonoBehaviour {
     private GameObject levelImage;
     private GameObject UIPanel;
 
+    Button mainMenu;
+    Button RestartLevel;
+
     Scene s;
 
     public static UIScript instance = null;
 
     void Awake()
     {
-        gm = GameManager.instance;
-        goldText = GameObject.Find("GoldText").GetComponent<Text>();
-
-
-        hsText = GameObject.Find("ScoreText").GetComponent<Text>();
-
 
         //Check if instance already exists
         if (instance == null)
@@ -44,17 +41,9 @@ public class UIScript : MonoBehaviour {
     private void Start()
     {
         Debug.Log("UI inistialized");
+        levelImage = GameObject.Find("lvlImage");
 
-        s = SceneManager.GetActiveScene();
-
-        if (s.name == "MainMenu")
-        {
-            DisableUI();
-        }
-        else
-        {
-
-        }
+        HideLevelImage();
     }
 
     public void DisableUI()
@@ -69,5 +58,27 @@ public class UIScript : MonoBehaviour {
     public void EnableUI()
     {
         gameObject.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        //levelText.text = "Game Over . . .";     //change this to a scene with buttons to restart level
+                                                //or go to main menu
+
+        levelImage.SetActive(true);
+        mainMenu.gameObject.SetActive(true);
+        RestartLevel.gameObject.SetActive(true);
+
+        enabled = false;
+
+        gm.ResetCounts();
+
+    }
+
+    //Hides black image used between levels
+    public void HideLevelImage()
+    {
+        //Disable the levelImage gameObject.
+        levelImage.SetActive(false);
     }
 }

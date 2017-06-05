@@ -12,7 +12,7 @@ public class PickupItem : MonoBehaviour
     GameManager gm = GameManager.instance;
 
     //these are going to be used so that when an item is picked up (mainly for enabling/disabling button)
-    public delegate void OnItemPickedUp(string item);
+    public delegate void OnItemPickedUp(GameObject item);
     public static event OnItemPickedUp OnItemPickedUpEvent;
 
     private void Start()
@@ -52,9 +52,9 @@ public class PickupItem : MonoBehaviour
 
                 // Send notification that this object is about placed
                 if (OnItemPickedUpEvent != null)
-                    OnItemPickedUpEvent(hit.transform.tag);
+                    OnItemPickedUpEvent(hit.transform.gameObject);
 
-                Destroy(hit.transform.gameObject, 0.05f);
+                //Destroy(hit.transform.gameObject, 0.05f);
                 gm.currGold += value;
                 DislayScoreScore();
             }

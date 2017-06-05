@@ -10,6 +10,7 @@ public class MenuClick : MonoBehaviour {
 
     void Awake()
     {
+
         //Check if instance already exists
         if (instance == null)
 
@@ -25,10 +26,9 @@ public class MenuClick : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-
     public void PickTower(TowerBtn towerBtn)
     {
         ClickedBtn = towerBtn;
-       Debug.Log("I clicked :" + ClickedBtn.TowerPrefab);
+       //Debug.Log("I clicked :" + ClickedBtn.TowerPrefab);
     }
 }

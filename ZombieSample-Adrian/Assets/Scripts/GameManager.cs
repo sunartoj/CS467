@@ -20,9 +20,7 @@ public class GameManager : MonoBehaviour {
     private Text hsText;
     private Text goldText;
 	private Text levelText;
-	private GameObject levelImage;
-	Button mainMenu;
-	Button RestartLevel;
+
 
     #region DropTowers
 
@@ -50,10 +48,10 @@ public class GameManager : MonoBehaviour {
 	void Start()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoading;
-		level = 0;
+		level = 1;
 		currScore = 0;
         hiScore = 0;
-        currGold = 200;
+        currGold = 2000;
         pillBottleCount = 0;
         recordPlayerCount = 0;
     }
@@ -103,32 +101,7 @@ public class GameManager : MonoBehaviour {
 	}
 		
 
-	//Hides black image used between levels
-	void HideLevelImage()
-	{
-		//Disable the levelImage gameObject.
-		levelImage.SetActive(false);
-
-		//Set doingSetup to false allowing player to move again.
-		//doingSetup = false;
-	}
-
-	public void GameOver()
-    {
-        levelText.text = "Game Over . . .";     //change this to a scene with buttons to restart level
-                                                //or go to main menu
-
-        levelImage.SetActive(true);
-        mainMenu.gameObject.SetActive(true);
-        RestartLevel.gameObject.SetActive(true);
-
-        enabled = false;
-
-        ResetCounts();
-
-    }
-
-    private void ResetCounts()
+    public void ResetCounts()
     {
         if (currScore > hiScore)
         {

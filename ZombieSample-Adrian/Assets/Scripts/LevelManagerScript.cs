@@ -81,8 +81,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     public GameObject[] theZombie;
 
     GameManager gm;
-    UIScript ui;
-    private GameObject levelImage;
+    UIScript uis;
 
     float nextSpawnTime;
     Animator cannonAnim;        //allows us to control animation
@@ -101,22 +100,19 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
 
     void Awake()
     {
+        uis = UIScript.instance;
         gm = GameManager.instance;
-        ui = UIScript.instance;
-
         spawnPts = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
     // Use this for initialization
     void Start()
     {
-        ui.EnableUI();
-        levelImage = GameObject.Find("lvlImage");
-        levelImage.SetActive(false);
+
+        //uis.HideLevelImage();
 
         CreateLevel();
         nextSpawnTime = Time.time + 5f;
-
 
         //how many enemies per level
         maxEnemies = gm.level;

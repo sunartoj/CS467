@@ -78,6 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PillBottlePickupScript.cs" />
+    <Compile Include="Assets\RecordPlayerPickupScript.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Scripts\DragHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />
     <Compile Include="Assets\Scripts\TowerBtn.cs" />
+    <Compile Include="Assets\Scripts\UIScript.cs" />
     <Compile Include="Assets\Scripts\Z.cs" />
     <Compile Include="Assets\Scripts\bulletCtrl.cs" />
     <Compile Include="Assets\Scripts\enemyDamage.cs" />
@@ -105,7 +108,6 @@
     <Compile Include="Assets\Scripts\reloadScene.cs" />
     <Compile Include="Assets\Scripts\shootBullet.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />
-    <Compile Include="Assets\UIScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
