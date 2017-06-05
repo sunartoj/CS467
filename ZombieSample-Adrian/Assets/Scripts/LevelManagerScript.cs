@@ -81,6 +81,8 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     public GameObject[] theZombie;
 
     GameManager gm;
+    UIScript ui;
+    private GameObject levelImage;
 
     float nextSpawnTime;
     Animator cannonAnim;        //allows us to control animation
@@ -100,18 +102,24 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     void Awake()
     {
         gm = GameManager.instance;
+        ui = UIScript.instance;
+
         spawnPts = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
     // Use this for initialization
     void Start()
     {
+        ui.EnableUI();
+        levelImage = GameObject.Find("lvlImage");
+        levelImage.SetActive(false);
+
         CreateLevel();
         nextSpawnTime = Time.time + 5f;
 
 
         //how many enemies per level
-        maxEnemies = gm.level * 10;
+        maxEnemies = gm.level;
         zombieCount = 0;
 
         maxEnemyType = 3;
@@ -160,15 +168,16 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     //load scene. I only have one at this time...
     void LoadNext()
     {
-        if (gm.level == 5)
-        {
-            SceneManager.LoadScene(2);
-        }
-        else
-        {
-            SceneManager.LoadScene(1);
-        }
-        
+        //if (gm.level == 1)
+        //{
+        //    SceneManager.LoadScene(2);
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(1);
+        //}
+
+        SceneManager.LoadScene(1);
     }
 
     IEnumerable Wait()
