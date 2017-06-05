@@ -9,7 +9,7 @@ public class PillBottlePickupScript : MonoBehaviour
     GameManager gm;
     Button thisButton;
 
-    private void Awake()
+    void Start()
     {
         gm = GameManager.instance;
         thisButton = this.GetComponent<Button>();
@@ -24,6 +24,10 @@ public class PillBottlePickupScript : MonoBehaviour
         if (item.tag == "PillBottle")
         {
             thisButton.interactable = true;
+        }
+        else
+        {
+            thisButton.interactable = false;
         }
 
         Destroy(item);

@@ -9,7 +9,7 @@ public class RecordPlayerPickupScript : MonoBehaviour {
     Button thisButton;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
         gm = GameManager.instance;
         thisButton = this.GetComponent<Button>();
@@ -27,6 +27,10 @@ public class RecordPlayerPickupScript : MonoBehaviour {
             if (gm.recordPlayerCount > 0 )
             {
                 thisButton.interactable = true;
+            }
+            else
+            {
+                thisButton.interactable = false;
             }
         }
 

@@ -8,7 +8,7 @@ public class UIScript : MonoBehaviour
 {
 
     GameManager gm;
-    private Text hsText;
+    private Text scoreText;
     private Text goldText;
     private Text levelText;
     private GameObject levelImage;
@@ -42,10 +42,16 @@ public class UIScript : MonoBehaviour
     private void Start()
     {
         gm = GameManager.instance;
+
         Debug.Log("UI inistialized");
+
         levelImage = GameObject.Find("lvlImage");
         UIPanel = GameObject.Find("UIPanel");
 
+        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+
+        UpdateText();
         HideLevelImage();
         HidePanel();
     }
@@ -92,5 +98,11 @@ public class UIScript : MonoBehaviour
     {
         //Disable the levelImage gameObject.
         UIPanel.SetActive(true);
+    }
+
+    public void UpdateText()
+    {
+        scoreText.text = "Score: " + gm.currScore;
+        goldText.text = "Gold: " + gm.currGold;
     }
 }

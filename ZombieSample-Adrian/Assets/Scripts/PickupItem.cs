@@ -9,6 +9,7 @@ public class PickupItem : MonoBehaviour
     public int value;
 
     private Text goldText;
+    private Text scoreText;
     GameManager gm = GameManager.instance;
 
     //these are going to be used so that when an item is picked up (mainly for enabling/disabling button)
@@ -56,7 +57,7 @@ public class PickupItem : MonoBehaviour
 
                 //Destroy(hit.transform.gameObject, 0.05f);
                 gm.currGold += value;
-                DislayScoreScore();
+                gm.DislayScoreScore();
             }
         }
     }
@@ -91,8 +92,4 @@ public class PickupItem : MonoBehaviour
 
     //}
 
-    void DislayScoreScore()
-    {
-        goldText.text = "Gold: " + gm.currGold;
-    }
 }

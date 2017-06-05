@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     public int level { get; set; }
     public int pillBottleCount { get; set; }
     public int recordPlayerCount { get; set; }
-    private Text hsText;
+    private Text scoreText;
     private Text goldText;
 	private Text levelText;
 
@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour {
 
         if (scene.name=="WinScene")
         {
-
             if (currScore > hiScore)
             {
                 hiScore = currScore;
@@ -74,7 +73,7 @@ public class GameManager : MonoBehaviour {
         {
             if (scene.name == "MainMenu")
             {
-
+                ResetCounts();
             }
             else
             { 
@@ -115,7 +114,11 @@ public class GameManager : MonoBehaviour {
 
     public void DislayScoreScore()
     {
+        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
 
+        scoreText.text = "Score: " + currScore;
+        goldText.text = "Gold: " + currGold;
     }
 
     public void PickTower(TowerBtn towerBtn)

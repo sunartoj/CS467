@@ -130,7 +130,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             nextSpawnTime = Time.time + 5f;
 
             //how many enemies per level
-            maxEnemies = gm.level;
+            maxEnemies = gm.level * 2;
             zombieCount = 0;
             maxEnemyType = 3;
             enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
@@ -149,6 +149,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     {
         if (win)
         {
+            Invoke("LoadNext", 2);
             return;
         }
         if (zombieCount < maxEnemies && nextSpawnTime < Time.time)
@@ -163,7 +164,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             {
                 win = true;
                 Debug.Log("Win!");
-                Invoke("LoadNext", 3);
+                //Invoke("LoadNext", 2);
                 //LoadNext();
             }
         }

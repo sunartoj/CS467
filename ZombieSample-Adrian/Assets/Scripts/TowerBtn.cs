@@ -22,13 +22,20 @@ public class TowerBtn : MonoBehaviour {
         tileScript.OnTilePlacedEvent += Ts_OnTilePlacedEvent;
         LevelManagerScript.OnLevelLoadedEvent += LevelManagerScript_OnLevelLoadedEvent;
 
+        InitButtons();
+
     }
 
     private void LevelManagerScript_OnLevelLoadedEvent(int level)
     {
+        InitButtons();
+    }
+
+    private void InitButtons()
+    {
         if (gameObject.name == "CowgirlBtn")
         {
-            if (gm.level >= 2 /* && gm.currGold > towerPrefab.GetComponent<ninjaCtrl>().cost*/ )
+            if (gm.level >= 2  /*&& gm.currGold > towerPrefab.GetComponent<ninjaCtrl>().cost*/ )
             {
                 //thisButton = GameObject.Find("CowgirlBtn").GetComponent<Button>();
                 this.GetComponent<Button>().interactable = true;
@@ -57,6 +64,7 @@ public class TowerBtn : MonoBehaviour {
         {
             if (gm.pillBottleCount > 0)
             {
+                Debug.Log("Pill bottle count: " + gm.pillBottleCount);
                 this.GetComponent<Button>().interactable = true;
             }
             else
@@ -68,6 +76,7 @@ public class TowerBtn : MonoBehaviour {
         {
             if (gm.recordPlayerCount > 0)
             {
+                Debug.Log("Record Player count: " + gm.recordPlayerCount);
                 this.GetComponent<Button>().interactable = true;
             }
             else
