@@ -142,7 +142,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             nextSpawnTime = Time.time + 5f;
 
             //how many enemies per level
-            maxEnemies = 1;
+            maxEnemies = 10 * gm.level;
             zombieCount = 0;
             maxEnemyType = 3;
             enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
@@ -195,7 +195,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     //load scene. I only have one at this time...
     void LoadNext()
     {
-        if (gm.level == 2)
+        if (gm.level == 5)
         {
             SceneManager.LoadScene(2);
         }

@@ -51,13 +51,13 @@ public class PickupItem : MonoBehaviour
 
                 }
 
+                gm.currGold += value;
+                gm.DislayScoreScore();
+
                 // Send notification that this object is about placed
                 if (OnItemPickedUpEvent != null)
                     OnItemPickedUpEvent(hit.transform.gameObject);
 
-                //Destroy(hit.transform.gameObject, 0.05f);
-                gm.currGold += value;
-                gm.DislayScoreScore();
             }
         }
     }
