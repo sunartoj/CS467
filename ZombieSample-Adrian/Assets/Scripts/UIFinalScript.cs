@@ -12,8 +12,8 @@ public class UIFinalScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gm = GameManager.instance;
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+        scoreText = GameObject.Find("sText").GetComponent<Text>();
+        goldText = GameObject.Find("gText").GetComponent<Text>();
 
         scoreText.text = "Score: " + gm.currScore;
         goldText.text = "Gold: " + gm.currGold;

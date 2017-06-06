@@ -122,10 +122,12 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         }
         else if (s.name == "WinScene")
         {
+            uis.HideLevelImage();
             uis.DisableUI();
         }
         else if (s.name == "GameOver")
         {
+            uis.HideLevelImage();
             uis.DisableUI();
             Debug.Log("Levelmngr Game Over....");
         }
