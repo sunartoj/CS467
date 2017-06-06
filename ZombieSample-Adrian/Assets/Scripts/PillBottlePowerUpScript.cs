@@ -10,7 +10,7 @@ public class PillBottlePowerUpScript : MonoBehaviour {
         {
             enemyHealth eh = other.gameObject.GetComponent<enemyHealth>();
             Debug.Log("A zombie entered with health: " + eh.currentHealth);
-            eh.TakeDamage((int)(eh.currentHealth * 0.25));
+            eh.TakeDamage((int)(eh.currentHealth * 0.10));
             Debug.Log("Zombie health after: " + eh.currentHealth);
         }
     }

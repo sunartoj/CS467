@@ -90,20 +90,27 @@ public class TowerBtn : MonoBehaviour {
     {
         if (tower.name == "PillBottlePowerUp")
         {
-            Debug.Log("Placed a pill bottle");
-
-            if (gm.pillBottleCount <= 0 && gameObject.name == "PillBottle")
+            if (TowerPrefab.tag == "PillBottlePowerUp")
             {
-                this.GetComponent<Button>().interactable = false;
+                Debug.Log("Placed a pill bottle");
+
+                if (gm.pillBottleCount <= 0)
+                {
+                    this.GetComponent<Button>().interactable = false;
+                }
             }
         }
+
         else if (tower.name == "recordPlayerPowerUp")
         {
             Debug.Log("Placed a record player");
 
-            if (gm.recordPlayerCount <= 0 && gameObject.name == "RecordPlayerBtn")
+            if (TowerPrefab.tag == "RecordPlayerPowerUp")
             {
-                this.GetComponent<Button>().interactable = false;
+                if (gm.recordPlayerCount <= 0)
+                {
+                    this.GetComponent<Button>().interactable = false;
+                }
             }
         }
     }

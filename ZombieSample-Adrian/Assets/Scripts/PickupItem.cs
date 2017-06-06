@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PickupItem : MonoBehaviour
 {
@@ -31,6 +32,13 @@ public class PickupItem : MonoBehaviour
             //this gnores other layers except for "pickups"
             LayerMask mask = 1 << LayerMask.NameToLayer("Pickups");
             RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero, 0f, mask);
+
+            // Check if the mouse was clicked over a UI element
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Clicked on the UI");
+                return;
+            }
 
             if (hit)
             {

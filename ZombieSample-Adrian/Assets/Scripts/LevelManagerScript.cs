@@ -165,7 +165,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
         }
         if (zombieCount < maxEnemies && nextSpawnTime < Time.time)
         {
-            nextSpawnTime = Time.time + Random.Range(3f, 5f);      //reset when we can spawn next. Maybe randomize?
+            nextSpawnTime = Time.time + Random.Range(2f, 3f);      //reset when we can spawn next. Maybe randomize?
             createSpawn();
         }
         else if (nextSpawnTime < Time.time)

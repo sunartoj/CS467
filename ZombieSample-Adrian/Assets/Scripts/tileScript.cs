@@ -72,7 +72,7 @@ public class tileScript : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && MenuClick.ClickedBtn != null)
         {
             //if this is a pill bottle
-            if (MenuClick.ClickedBtn.TowerPrefab.tag == "PillBottle")
+            if (MenuClick.ClickedBtn.TowerPrefab.tag == "PillBottlePowerUp")
             {
                 if (gm.pillBottleCount <= 0)
                 {
@@ -83,12 +83,13 @@ public class tileScript : MonoBehaviour
                 {
                     gm.pillBottleCount--;
                     Debug.Log("Used a pill Bottle: " + gm.pillBottleCount);
+                    //BuyTower();
                 }
 
             }
 
             //if this is a record
-            if (MenuClick.ClickedBtn.TowerPrefab.tag == "RecordPlayer")
+            if (MenuClick.ClickedBtn.TowerPrefab.tag == "RecordPlayerPowerUp")
             {
                 if (gm.recordPlayerCount <= 0)
                 {
@@ -99,6 +100,7 @@ public class tileScript : MonoBehaviour
                 {
                     gm.recordPlayerCount--;
                     Debug.Log("Used a record: " + gm.recordPlayerCount);
+                    //BuyTower();
                 }
 
             }
