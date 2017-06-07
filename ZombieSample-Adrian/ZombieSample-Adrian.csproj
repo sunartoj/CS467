@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PlayerDataController.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Scripts\DragHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -92,14 +93,15 @@
     <Compile Include="Assets\Scripts\PickupItem.cs" />
     <Compile Include="Assets\Scripts\PillBottlePickupScript.cs" />
     <Compile Include="Assets\Scripts\PillBottlePowerUpScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Scripts\RecordPlayerPickupScript.cs" />
+    <Compile Include="Assets\Scripts\SavedGameData.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnMZombie.cs" />
     <Compile Include="Assets\Scripts\TowerBtn.cs" />
     <Compile Include="Assets\Scripts\UIFinalScript.cs" />
     <Compile Include="Assets\Scripts\UIScript.cs" />
-    <Compile Include="Assets\Scripts\Z.cs" />
     <Compile Include="Assets\Scripts\bulletCtrl.cs" />
     <Compile Include="Assets\Scripts\enemyDamage.cs" />
     <Compile Include="Assets\Scripts\enemyHealth.cs" />

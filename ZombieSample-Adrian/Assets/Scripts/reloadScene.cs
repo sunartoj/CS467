@@ -9,6 +9,8 @@ public class reloadScene : MonoBehaviour {
 
 	public void LoadScene()
 	{
+        gm.SaveGame();
+
 		Debug.Log ("Reloading Level" + gm.level);
         gm.currScore = gm.levelStartScore;
         gm.currGold = gm.levelStartGold;

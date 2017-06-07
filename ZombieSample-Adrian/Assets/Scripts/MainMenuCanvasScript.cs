@@ -12,7 +12,6 @@ public class MainMenuCanvasScript : MonoBehaviour {
 	void Start () {
         gm = GameManager.instance;
         hsText = GameObject.Find("HighScoreText").GetComponent<Text>();
-
         hsText.text = "High Score: " + gm.hiScore.ToString();
     }
 	

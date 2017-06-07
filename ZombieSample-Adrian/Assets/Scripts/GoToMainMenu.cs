@@ -8,6 +8,13 @@ public class GoToMainMenu : MonoBehaviour {
 
 	public void LoadScene()
 	{
+        save();
 		SceneManager.LoadScene (0);
 	}
+
+
+    void save()
+    {
+        gm.SaveGame();
+    }
 }

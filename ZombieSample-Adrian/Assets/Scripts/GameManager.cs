@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public PlayerDataController pdc;
     public static GameManager instance = null;
     public float levelStartDelay = 2f;                      //Time to wait before starting level, in seconds.
 
+    public string playerName { get; set; }
     public int currScore { get; set; }
     public int currGold { get; set; }
     public int hiScore { get; set; }
@@ -48,13 +49,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
+        
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;  
         level = 0;
         currScore = 0;
         hiScore = 0;
         currGold = 100;
         pillBottleCount = 0;
         recordPlayerCount = 0;
+        playerName = "";
     }
 
     //This is called each time a scene is loaded.
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "MainMenu")
         {
+
             level = 0;
             ResetCounts();
             Debug.Log("Reset counts at main menu on Game Manager");
@@ -94,13 +99,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("init: " + level);
     }
 
+    public void SaveGame()
+    {
+        SetHighScore();
 
-    public void ResetCounts()
+        pdc = PlayerDataController.instance;
+
+        pdc.SavePlayer();
+    }
+
+    private void SetHighScore()
     {
         if (currScore > hiScore)
         {
             hiScore = currScore;
         }
+    }
+
+    void ResetCounts()
+    {
+        SetHighScore();
 
         currScore = 0;
         currGold = 100;
