@@ -9,8 +9,12 @@ public static class loadEnemies
 
     public static enemyConfig[] LoadEnemies()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, enemyDataFileName);
-        string dataAsJson = File.ReadAllText(filePath);
+        //this doe snot work for webgl
+        //string filePath = Path.Combine(Application.streamingAssetsPath, enemyDataFileName);
+        //string dataAsJson = File.ReadAllText(filePath);
+
+        TextAsset txt = Resources.Load("enemyConfig") as TextAsset;
+        string dataAsJson = txt.text;
 
         enemyConfigArray en = new enemyConfigArray();
         en = JsonUtility.FromJson<enemyConfigArray>(dataAsJson);

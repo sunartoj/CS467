@@ -103,9 +103,9 @@ public class GameManager : MonoBehaviour
     {
         SetHighScore();
 
-        pdc = PlayerDataController.instance;
+        //pdc = PlayerDataController.instance;
 
-        pdc.SavePlayer();
+        //pdc.SavePlayer();
     }
 
     private void SetHighScore()

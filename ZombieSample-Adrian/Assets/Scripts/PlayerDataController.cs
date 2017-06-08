@@ -42,29 +42,26 @@ public class PlayerDataController : MonoBehaviour
     {
         gm = GameManager.instance;
 
+
+        //TURNS OUT - this does not work with webgl!!!!!!! 
         // Path.Combine combines strings into a file path
         // Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
-        string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
+        //string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
 
-        if (File.Exists(filePath))
+        TextAsset txt = Resources.Load("data") as TextAsset;
+
+
+        // Read the json from the file into a string
+        string dataAsJson = txt.text;
+        // Pass the json to JsonUtility, and tell it to create a GameData object from it
+        SavedGameData sv = new SavedGameData();
+        sv = JsonUtility.FromJson<SavedGameData>(dataAsJson);
+
+        if (sv.saves != null)
         {
-            // Read the json from the file into a string
-            string dataAsJson = File.ReadAllText(filePath);
-            // Pass the json to JsonUtility, and tell it to create a GameData object from it
-            SavedGameData sv = new SavedGameData();
-            sv = JsonUtility.FromJson<SavedGameData>(dataAsJson);
-
-            if (sv.saves != null)
-            {
-                pg = sv.saves;
-            }
-
-            
+            pg = sv.saves;
         }
-        else
-        {
-            Debug.LogError("Cannot load game data!");
-        }
+
     }
 
     private void SaveData()
@@ -131,7 +128,7 @@ public class PlayerDataController : MonoBehaviour
 
         foreach (var item in pg)
         {
-            if (item.name == playerName.text )
+            if (item.name == playerName.text)
             {
                 item.name = gm.playerName;
                 item.highestScore = gm.hiScore;

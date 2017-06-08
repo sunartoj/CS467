@@ -9,8 +9,12 @@ public class loadTowers : MonoBehaviour {
 
     public static towerConfig[] LoadTowers()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, enemyDataFileName);
-        string dataAsJson = File.ReadAllText(filePath);
+        //this does not work with webgl
+        //string filePath = Path.Combine(Application.streamingAssetsPath, enemyDataFileName);
+
+        TextAsset txt = Resources.Load("towerConfig") as TextAsset;
+
+        string dataAsJson = txt.text;
 
         towerConfigArray en = new towerConfigArray();
         en = JsonUtility.FromJson<towerConfigArray>(dataAsJson);
