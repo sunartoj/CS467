@@ -8,6 +8,7 @@ public class GoToMainMenu : MonoBehaviour {
 
 	public void LoadScene()
 	{
+        gm.isReload = true;
         save();
 		SceneManager.LoadScene (0);
 	}

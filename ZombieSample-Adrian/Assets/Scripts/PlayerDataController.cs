@@ -12,6 +12,8 @@ public class PlayerDataController : MonoBehaviour
     Text highScore;
     List<PlayerProgress> pg;
 
+    string theName;
+
     private string gameDataFileName = "data.json";
 
     private void Awake()
@@ -29,6 +31,7 @@ public class PlayerDataController : MonoBehaviour
 
         pg = new List<PlayerProgress>();
         playerName = GameObject.Find("playerName").GetComponent<Text>();
+
         highScore = GameObject.Find("HighScoreText").GetComponent<Text>();
 
         DontDestroyOnLoad(gameObject);

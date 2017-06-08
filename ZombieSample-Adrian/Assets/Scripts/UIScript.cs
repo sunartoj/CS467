@@ -79,7 +79,7 @@ public class UIScript : MonoBehaviour
         //mainMenu.gameObject.SetActive(true);
         //RestartLevel.gameObject.SetActive(true);
 
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(5);
 
     }
 

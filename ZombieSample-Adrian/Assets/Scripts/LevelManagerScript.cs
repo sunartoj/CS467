@@ -121,8 +121,12 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
 
         if (s.name == "MainMenu")
         {
-            uis.HidePanel();
-            uis.HideLevelImage();
+            if (gm.isReload)
+            {
+                uis.HidePanel();
+                uis.HideLevelImage();
+            }
+
         }
         else if (s.name == "WinScene")
         {
@@ -148,7 +152,7 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
             nextSpawnTime = Time.time + 5f;
 
             //how many enemies per level
-            maxEnemies = 10 * gm.level;
+            maxEnemies = 10 * gm.level + (gm.level-1)*5;
             zombieCount = 0;
             maxEnemyType = 3;
             enemyLevel = gm.level > maxEnemyType ? maxEnemyType : gm.level;
@@ -211,13 +215,13 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     //load scene. I only have one at this time...
     void LoadNext()
     {
-        if (gm.level == 5)
+        if (gm.level == 3)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(4);
         }
         else
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(gm.level + 1);
         }
     }
 

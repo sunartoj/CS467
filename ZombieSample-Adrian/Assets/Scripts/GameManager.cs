@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private Text scoreText;
     private Text goldText;
     private Text levelText;
+    public bool isReload;  //some stupid bug on reloading main menu...
 
 
     #region DropTowers
@@ -50,13 +51,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {  
         SceneManager.sceneLoaded += OnLevelFinishedLoading;  
-        level = 2;
+        level = 0;
         currScore = 0;
         hiScore = 0;
-        currGold = 10000;
+        currGold = 100;
         pillBottleCount = 0;
         recordPlayerCount = 0;
         playerName = "";
+        isReload = false;
     }
 
     //This is called each time a scene is loaded.
