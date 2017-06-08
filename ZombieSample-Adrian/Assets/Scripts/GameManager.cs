@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+
+
         //Check if instance already exists
         if (instance == null)
             //if not, set instance to this
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
+
         DontDestroyOnLoad(gameObject);
     }
 
