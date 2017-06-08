@@ -6,13 +6,13 @@
 		"chanceToDrop": 0.55
 	}, {
 		"points": 100,
-		"maxHealth": 120,
+		"maxHealth": 100,
 		"canDropItem": true,
-		"chanceToDrop": 0.20000000596046449
+		"chanceToDrop": 0.25000000596046449
 	}, {
 		"points": 150,
-		"maxHealth": 180,
+		"maxHealth": 160,
 		"canDropItem": true,
-		"chanceToDrop": 0.20000000596046449
+		"chanceToDrop": 0.25000000596046449
 	}]
 }
