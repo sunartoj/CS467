@@ -191,8 +191,16 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     {
         GameObject point = spawnPts[Random.Range(0, 5)];
         int whichZombie = Random.Range(0, enemyLevel);
-        var temp = Instantiate(theZombie[whichZombie], point.transform.position, Quaternion.identity); //the quaternion means no rotation
-        temp.layer = point.layer;       
+        GameObject temp = Instantiate(theZombie[whichZombie], point.transform.position, Quaternion.identity); //the quaternion means no rotation
+        temp.layer = point.layer;
+
+        enemyHealth eh = temp.GetComponent<enemyHealth>();
+
+        //enemyData - this is the data saved in file we need to set values from
+        eh.points = enemyData[whichZombie].points;
+        eh.maxHealth = enemyData[whichZombie].maxHealth;
+        eh.canDropItem = enemyData[whichZombie].canDropItem;
+        eh.chanceToDrop = enemyData[whichZombie].chanceToDrop;
 
         zombieCount++;
         spawned = true;

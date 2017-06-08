@@ -12,6 +12,9 @@ public class tileScript : MonoBehaviour
     public delegate void OnTilePlaced(GameObject tower);
     public static event OnTilePlaced OnTilePlacedEvent;
 
+    //this is for loading tower data from file,  requirement
+    public towerConfig[] towerData = new towerConfig[3];
+
     public Point GridPosition
     {
         get;
@@ -33,6 +36,8 @@ public class tileScript : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
+
+        
     }
 
     public void Setup(Point gridPos, Vector3 worldPos)
@@ -105,19 +110,6 @@ public class tileScript : MonoBehaviour
 
             }
 
-            //if you have enough gold
-            ninjaCtrl tl = MenuClick.ClickedBtn.TowerPrefab.GetComponent<ninjaCtrl>();
-            if (tl != null)
-            {
-                if (gm.currGold < tl.cost)
-                {
-                    return;
-                }
-
-                gm.currGold -= tl.cost;
-            }
-
-
             //THIS is actually placing the tower!!! Custom pivot point on prefab needs to be done. See video 5.1
             Vector3 temp = new Vector3(transform.position.x - .1f, transform.position.y - .45f, transform.position.z);    //I had to adjust as they were coming out of the middle
             GameObject tower = Instantiate(MenuClick.ClickedBtn.TowerPrefab, temp, Quaternion.identity);
@@ -129,6 +121,32 @@ public class tileScript : MonoBehaviour
 
             //makes htis tower a child object of tile
             tower.transform.SetParent(transform);
+
+            //loads individual tower data from files. Partof reqs
+            //Thisis kinda clunky but works. 
+            towerData = loadTowers.LoadTowers();
+
+            foreach (var twr in towerData)
+            {
+                if (twr.name == tower.tag)
+                {
+                    ninjaCtrl tmp = tower.GetComponent<ninjaCtrl>();
+                    tmp.maxHealth = twr.maxHealth;
+                    tmp.cost = twr.cost;
+                }
+            }
+
+            //if you have enough gold
+            ninjaCtrl tl = tower.GetComponent<ninjaCtrl>();
+            if (tower != null)
+            {
+                if (gm.currGold < tl.cost)
+                {
+                    return;
+                }
+
+                gm.currGold -= tl.cost;
+            }
 
             isEmpty = false;
             gm.DislayScoreScore();

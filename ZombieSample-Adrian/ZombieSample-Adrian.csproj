@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerDataController.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Scripts\DragHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Assets\Scripts\PickupItem.cs" />
     <Compile Include="Assets\Scripts\PillBottlePickupScript.cs" />
     <Compile Include="Assets\Scripts\PillBottlePowerUpScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerDataController.cs" />
     <Compile Include="Assets\Scripts\PlayerProgress.cs" />
     <Compile Include="Assets\Scripts\Point.cs" />
     <Compile Include="Assets\Scripts\RecordPlayerPickupScript.cs" />
@@ -111,10 +111,14 @@
     <Compile Include="Assets\Scripts\recordPlayerPowerUpScript.cs" />
     <Compile Include="Assets\Scripts\reloadScene.cs" />
     <Compile Include="Assets\Scripts\shootBullet.cs" />
+    <Compile Include="Assets\Scripts\temp\creataTowersToFile.cs" />
     <Compile Include="Assets\Scripts\temp\createEnemiestoFile.cs" />
     <Compile Include="Assets\Scripts\temp\enemyConfig.cs" />
     <Compile Include="Assets\Scripts\temp\enemyConfigArray.cs" />
     <Compile Include="Assets\Scripts\temp\loadEnemies.cs" />
+    <Compile Include="Assets\Scripts\temp\loadTowers.cs" />
+    <Compile Include="Assets\Scripts\temp\towerConfig.cs" />
+    <Compile Include="Assets\Scripts\temp\towerConfigArray.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
