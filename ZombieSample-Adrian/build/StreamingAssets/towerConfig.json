@@ -1,0 +1,15 @@
+{
+	"towers": [{
+		"name": "NinjaTwr",
+		"maxHealth": 300,
+		"cost": 25
+	}, {
+		"name": "CowGirlTwr",
+		"maxHealth": 350,
+		"cost": 50
+	}, {
+		"name": "RobotTwr",
+		"maxHealth": 300,
+		"cost": 100
+	}]
+}

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-
+        isReload = false;
 
         //Check if instance already exists
         if (instance == null)
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         pillBottleCount = 0;
         recordPlayerCount = 0;
         playerName = "";
-        isReload = false;
+
     }
 
     //This is called each time a scene is loaded.

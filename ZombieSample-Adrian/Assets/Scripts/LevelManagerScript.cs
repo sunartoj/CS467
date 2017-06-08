@@ -107,13 +107,15 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     void Awake()
     {
         uis = UIScript.instance;
-        gm = GameManager.instance;
+
         spawnPts = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
     // Use this for initialization
     void Start()
     {
+        gm = GameManager.instance;
+
         enemyData = loadEnemies.LoadEnemies();
 
         Scene s = SceneManager.GetActiveScene ();

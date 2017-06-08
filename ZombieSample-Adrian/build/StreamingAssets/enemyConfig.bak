@@ -1,0 +1,1 @@
+{"enemies":[{"points":65,"maxHealth":65,"canDropItem":true,"chanceToDrop":0.5},{"points":100,"maxHealth":100,"canDropItem":true,"chanceToDrop":0.15000000596046449},{"points":150,"maxHealth":125,"canDropItem":true,"chanceToDrop":0.15000000596046449}]}
