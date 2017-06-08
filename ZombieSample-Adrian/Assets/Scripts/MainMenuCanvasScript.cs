@@ -25,11 +25,6 @@ public class MainMenuCanvasScript : Singleton<MainMenuCanvasScript> {
 
         Scene s = SceneManager.GetActiveScene();
 
-        if (s.name != "MainMenu")
-        {
-            gameObject.SetActive(false);
-        }
-
     }
 	
 }

@@ -16,13 +16,6 @@ public class mainMenuButtons : MonoBehaviour
         
     }
 
-    void myFunctionForOnClickEvent(string argument1, float argument2)
-    {
-        // your code goes here
-        print(argument1 + ", " + argument2.ToString());
-    }
-
-
     public void LoadScene(int sceneIndex)
 	{
 		SceneManager.LoadScene (sceneIndex);

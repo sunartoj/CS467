@@ -12,6 +12,8 @@ public class PlayerDataController : MonoBehaviour
     Text highScore;
     List<PlayerProgress> pg;
 
+    Button myButton;
+
     string theName;
 
     private string gameDataFileName = "data.json";
@@ -29,12 +31,13 @@ public class PlayerDataController : MonoBehaviour
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
 
+        myButton = GetComponent<Button>(); // <-- you get access to the button component here
+        myButton.onClick.AddListener(() => { LoadPlayer(); });  // <-- you assign a method to the button OnClick event here
+
         pg = new List<PlayerProgress>();
         playerName = GameObject.Find("playerName").GetComponent<Text>();
-
         highScore = GameObject.Find("HighScoreText").GetComponent<Text>();
 
-        DontDestroyOnLoad(gameObject);
 
     }
 

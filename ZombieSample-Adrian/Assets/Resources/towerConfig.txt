@@ -9,7 +9,7 @@
 		"cost": 50
 	}, {
 		"name": "RobotTwr",
-		"maxHealth": 300,
+		"maxHealth": 400,
 		"cost": 100
 	}]
 }
