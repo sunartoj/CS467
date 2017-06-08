@@ -96,7 +96,7 @@ public class PlayerDataController : MonoBehaviour
     {
         LoadData();
 
-        playerName = GameObject.Find("playerName").GetComponent<Text>();
+        //playerName = GameObject.Find("playerName").GetComponent<Text>();
 
         bool isFound = false;
 

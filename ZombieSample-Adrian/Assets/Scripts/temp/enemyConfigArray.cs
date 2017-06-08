@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class SavedGameData
+public class enemyConfigArray
 {
-    public List<PlayerProgress> saves;
+    public enemyConfig[] enemies = new enemyConfig[3];
 }

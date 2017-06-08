@@ -111,6 +111,10 @@
     <Compile Include="Assets\Scripts\recordPlayerPowerUpScript.cs" />
     <Compile Include="Assets\Scripts\reloadScene.cs" />
     <Compile Include="Assets\Scripts\shootBullet.cs" />
+    <Compile Include="Assets\Scripts\temp\createEnemiestoFile.cs" />
+    <Compile Include="Assets\Scripts\temp\enemyConfig.cs" />
+    <Compile Include="Assets\Scripts\temp\enemyConfigArray.cs" />
+    <Compile Include="Assets\Scripts\temp\loadEnemies.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

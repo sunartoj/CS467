@@ -81,6 +81,9 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     public delegate void OnLevelLoaded(int level);
     public static event OnLevelLoaded OnLevelLoadedEvent;
 
+    //this is for loading zombie data from file
+    public enemyConfig[] enemyData = new enemyConfig[3];
+
     public GameObject[] theZombie;
 
     GameManager gm;
@@ -111,8 +114,9 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     // Use this for initialization
     void Start()
     {
-        Scene s = SceneManager.GetActiveScene ();
+        enemyData = loadEnemies.LoadEnemies();
 
+        Scene s = SceneManager.GetActiveScene ();
         Debug.Log("We are currently on scene: " + s.name);
 
         if (s.name == "MainMenu")
@@ -186,8 +190,10 @@ public class LevelManagerScript : Singleton<LevelManagerScript>
     public void createSpawn()
     {
         GameObject point = spawnPts[Random.Range(0, 5)];
-        GameObject temp = Instantiate(theZombie[Random.Range(0, enemyLevel)], point.transform.position, Quaternion.identity); //the quaternion means no rotation
-        temp.layer = point.layer;
+        int whichZombie = Random.Range(0, enemyLevel);
+        var temp = Instantiate(theZombie[whichZombie], point.transform.position, Quaternion.identity); //the quaternion means no rotation
+        temp.layer = point.layer;       
+
         zombieCount++;
         spawned = true;
 
