@@ -12,6 +12,8 @@ public class enemyHealth : MonoBehaviour {
     public GameObject theDrop;
     public float chanceToDrop;
 
+    bool dead;
+
     Animator anim;
     MoveMe mm;
 
@@ -28,6 +30,8 @@ public class enemyHealth : MonoBehaviour {
         anim = GetComponent<Animator>();
         mm = GetComponent<MoveMe>();
 
+        dead = false;
+
 	}
 	
 	// Update is called once per frame
@@ -38,6 +42,14 @@ public class enemyHealth : MonoBehaviour {
 	//this is for when character takes damage
 	public void TakeDamage(int damage)
 	{
+
+        //when the animationis playing, the zombie gets hit again and wil have a chance to drop again.
+        //this stops that
+        if (dead)
+        {
+            return;
+        }
+
 		currentHealth -= damage;
 		//Debug.Log ("Current Health: " + currentHealth); 
 		if (currentHealth <= 0) {
@@ -45,7 +57,11 @@ public class enemyHealth : MonoBehaviour {
             mm.currSpeed = 0;
             anim.SetBool("isDead", true);
 
+            dead = true;
+
 			Destroy (gameObject, 1.5f);
+
+            
 
             if (canDropItem)
             {
