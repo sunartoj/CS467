@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\temp\towerConfig.cs" />
     <Compile Include="Assets\Scripts\temp\towerConfigArray.cs" />
     <Compile Include="Assets\Scripts\tileScript.cs" />
+    <Compile Include="Assets\startShooting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\data.txt" />
