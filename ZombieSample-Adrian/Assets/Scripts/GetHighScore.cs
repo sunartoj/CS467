@@ -11,7 +11,7 @@ public class GetHighScore : MonoBehaviour {
 	void DislayHighScore()
 	{
 		hsText = GameObject.Find ("highScoreText").GetComponent<Text> ();
-		hsText.text = "High Score: ";// + gm.highScore;
+		hsText.text = "High Score: ";// + gm.currScore;
 	}
 	void Start()
 	{

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class gameOverScript : MonoBehaviour {
 
-	GameManager gm = GameManager.instance;
+    GameManager gm;
+    UIScript ui;
 
-	void OnTriggerEnter2D(Collider2D other)
+    private void Start()
+    {
+        gm = GameManager.instance;
+        ui = UIScript.instance;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag=="Zombie") {
-			gm.GameOver ();
+        if (other.tag=="Zombie") {
+			ui.GameOver ();
 		}
 	}
 }

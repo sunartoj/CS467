@@ -1,0 +1,15 @@
+{
+	"saves": [{
+		"name": "Chris",
+		"highestLevel": 1,
+		"highestScore": 5040
+	}, {
+		"name": "Adrian",
+		"highestLevel": 4,
+		"highestScore": 8955
+	}, {
+		"name": "Johanes",
+		"highestLevel": 4,
+		"highestScore": 8990
+	}]
+}
