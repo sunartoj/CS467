@@ -8,6 +8,8 @@ public class ninjaCtrl : MonoBehaviour {
     public int cost;
 	int currentHealth;
 
+    Animator enemyAnim;
+
     //used to handle when this object is destroyed
     public delegate void OnDestroyDelegate(MonoBehaviour instance);
     public event OnDestroyDelegate OnDestroyEvnt;
@@ -19,20 +21,36 @@ public class ninjaCtrl : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag=="Zombie") {
-			TakeDamage (1);
+		if (other.tag=="Zombie")
+        {
+            enemyAnim = other.GetComponent<Animator>();
+            enemyAnim.SetBool("isAttacking", true);
+
+            TakeDamage (1);
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.tag=="Zombie") {
+		if (other.tag=="Zombie")
+        {
+
+
 			TakeDamage (1);
-			Debug.Log ("Took Damage");
+			//Debug.Log ("Took Damage");
 		}
 	}
 
-	public void TakeDamage(int damage)
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Zombie")
+        {
+            enemyAnim = other.GetComponent<Animator>();
+            enemyAnim.SetBool("isAttacking", false);
+        }
+    }
+
+    public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
 		//Debug.Log ("Took damage: " + currentHealth); 

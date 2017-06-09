@@ -12,6 +12,9 @@ public class enemyHealth : MonoBehaviour {
     public GameObject theDrop;
     public float chanceToDrop;
 
+    Animator anim;
+    MoveMe mm;
+
 	public int currentHealth { get; set; }
 
 	GameManager gm = GameManager.instance;
@@ -21,6 +24,10 @@ public class enemyHealth : MonoBehaviour {
 	void Start () {
 		currentHealth = maxHealth;
 		hsText = GameObject.Find ("ScoreText").GetComponent<Text> ();
+
+        anim = GetComponent<Animator>();
+        mm = GetComponent<MoveMe>();
+
 	}
 	
 	// Update is called once per frame
@@ -34,7 +41,11 @@ public class enemyHealth : MonoBehaviour {
 		currentHealth -= damage;
 		//Debug.Log ("Current Health: " + currentHealth); 
 		if (currentHealth <= 0) {
-			Destroy (gameObject);
+
+            mm.currSpeed = 0;
+            anim.SetBool("isDead", true);
+
+			Destroy (gameObject, 1.5f);
 
             if (canDropItem)
             {
@@ -57,4 +68,9 @@ public class enemyHealth : MonoBehaviour {
 	{		
 		hsText.text = "Score: " + gm.currScore;
 	}
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2.0f);
+    }
 }
